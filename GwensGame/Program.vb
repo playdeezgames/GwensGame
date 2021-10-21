@@ -7,6 +7,7 @@ Module Program
             ShowPrompts()
             ReadInput()
         End While
+        CloseConnection()
         ShowGoodBye()
     End Sub
 End Module
