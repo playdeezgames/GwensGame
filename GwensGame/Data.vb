@@ -53,22 +53,23 @@ Module Data
         connection = New SqliteConnection("Data Source=:memory:")
         connection.Open()
     End Sub
-    Private Sub ScaffoldData()
+    Private Sub ScaffoldData(name As String)
         Dim command As SqliteCommand = connection.CreateCommand()
-        command.CommandText = "CREATE TABLE IF NOT EXISTS [Players]([PlayerId] INT NOT NULL, [X] INT NOT NULL,[Y] INT NOT NULL,[Facing] INT);"
+        command.CommandText = "CREATE TABLE IF NOT EXISTS [Players]([PlayerId] INT NOT NULL, [X] INT NOT NULL,[Y] INT NOT NULL,[Facing] INT, [Name] TEXT NOT NULL);"
         command.ExecuteNonQuery()
 
         command = connection.CreateCommand()
-        command.CommandText = "REPLACE INTO [Players]([PlayerId],[X],[Y],[Facing]) VALUES ($PlayerId, $X, $Y, $Facing);"
+        command.CommandText = "REPLACE INTO [Players]([PlayerId],[X],[Y],[Facing],[Name]) VALUES ($PlayerId, $X, $Y, $Facing,$Name);"
         command.Parameters.AddWithValue("$PlayerId", playerId)
         command.Parameters.AddWithValue("$X", 0)
         command.Parameters.AddWithValue("$Y", 0)
         command.Parameters.AddWithValue("$Facing", 0)
+        command.Parameters.AddWithValue("$Name", name)
         command.ExecuteNonQuery()
     End Sub
-    Public Sub ResetData()
+    Public Sub ResetData(name As String)
         OpenConnection()
-        ScaffoldData()
+        ScaffoldData(name)
     End Sub
     Public Function IsInPlay() As Boolean
         Return connection IsNot Nothing AndAlso connection.State = System.Data.ConnectionState.Open

@@ -1,7 +1,9 @@
 ﻿Module Start
     Public StartGame As Action =
         Sub()
-            ResetData()
+            Console.WriteLine()
+            Console.Write("What is yer name?")
+            ResetData(Console.ReadLine())
             ClearPrompts()
             ShowStatus()
         End Sub
