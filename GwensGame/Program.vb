@@ -3,6 +3,7 @@ Module Program
         ShowWelcome()
         ShowMainMenu()
         While HasInputItems()
+            Console.WriteLine()
             ShowPrompts()
             ReadInput()
         End While

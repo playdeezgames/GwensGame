@@ -8,6 +8,10 @@
     Public Function GetY() As Integer
         Return y
     End Function
+    Public Function SetXY(newX As Integer, newY As Integer)
+        x = newX
+        y = newY
+    End Function
     Public Function GetFacing() As Direction
         Return facing
     End Function
