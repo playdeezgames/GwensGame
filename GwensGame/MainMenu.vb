@@ -4,7 +4,11 @@
             ClearPrompts()
             AddPrompt("Main Menu:")
             ClearInputItems()
-            AddInputItem("Start Game", StartGame)
+            If IsInPlay() Then
+                AddInputItem("Continue Game", ShowStatus)
+            Else
+                AddInputItem("Start Game", StartGame)
+            End If
             AddInputItem("Quit", QuitGame)
         End Sub
 End Module
