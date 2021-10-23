@@ -7,6 +7,10 @@
         _actionItems.Add(New ActionItem(text, action))
     End Sub
     Function SelectAction() As Boolean
+        If _actionItems.Count() = 1 Then
+            _actionItems(0).Perform()
+            Return True
+        End If
         Dim index As Integer = 1
         For Each actionItem In _actionItems
             Console.WriteLine($"{index}) {actionItem.DisplayText}")
