@@ -10,13 +10,13 @@
             ClearPrompts()
             AddPrompt("Are you sure you want to quit?")
             ClearActions()
-            AddAction("No", MainMenu)
-            AddAction("Yes", QuitGame)
+            AddAction("No", MainMenu, ConsoleColor.Gray)
+            AddAction("Yes", QuitGame, ConsoleColor.Gray)
         End Sub
 
     ReadOnly StartGame As Action =
         Sub()
-            ResetData()
+            InPlay.StartGame()
             CurrentArea()
         End Sub
 
@@ -26,11 +26,11 @@
             AddPrompt("Main Menu:")
             ClearActions()
             If IsInPlay() Then
-                AddAction("Continue", CurrentArea)
+                AddAction("Continue", CurrentArea, ConsoleColor.Gray)
             Else
-                AddAction("Start", StartGame)
+                AddAction("Start", StartGame, ConsoleColor.Gray)
             End If
-            AddAction("Quit", ConfirmQuit)
+            AddAction("Quit", ConfirmQuit, ConsoleColor.Gray)
         End Sub
 
 End Module

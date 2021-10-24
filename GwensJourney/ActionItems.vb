@@ -3,8 +3,8 @@
     Sub ClearActions()
         _actionItems.Clear()
     End Sub
-    Sub AddAction(text As String, action As Action)
-        _actionItems.Add(New ActionItem(text, action))
+    Sub AddAction(text As String, action As Action, color As ConsoleColor)
+        _actionItems.Add(New ActionItem(text, action, color))
     End Sub
     Function SelectAction() As Boolean
         If _actionItems.Count() = 1 Then
