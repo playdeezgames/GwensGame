@@ -1,4 +1,5 @@
 ﻿Module Pace
+    Private Const INITIAL_PACE As Integer = 3
     Private _pace As Integer
     Function GetPace() As Integer
         Return _pace
@@ -20,5 +21,7 @@
                 Return "Medium"
         End Select
     End Function
-
+    Sub ResetPace()
+        SetPace(INITIAL_PACE)
+    End Sub
 End Module
