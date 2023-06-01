@@ -13,11 +13,11 @@
         End If
         Dim index As Integer = 1
         For Each actionItem In _actionItems
-            Console.WriteLine($"{index}) {actionItem.DisplayText}")
+            AnsiConsole.MarkupLine($"{index}) {actionItem.DisplayText}")
             index += 1
         Next
-        Console.WriteLine()
-        Console.Write(">")
+        AnsiConsole.WriteLine()
+        AnsiConsole.Markup(">")
         Dim input As String = Console.ReadLine()
         Dim itemIndex As Integer
         If Integer.TryParse(input, itemIndex) Then
@@ -27,7 +27,7 @@
                 Return True
             End If
         End If
-        Console.WriteLine($"Please enter a number between 1 and {_actionItems.Count}.")
+        AnsiConsole.MarkupLine($"[red]Please enter a number between 1 and {_actionItems.Count}.[/]")
         Return False
     End Function
     Function HasActions() As Boolean

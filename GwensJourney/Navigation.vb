@@ -1,7 +1,7 @@
 ﻿Module Navigation
     Sub KeepGoing()
-        DistanceRemaining.Change(-GetPace())
-        HungerCounter.Change(GetPace())
+        DistanceRemaining.Change(-Pace.Read())
+        HungerCounter.Change(Pace.Read())
         If HasArrived() Then
             TheEnd()
         Else
@@ -18,7 +18,7 @@
     Public Function DoSetPace(pace As Integer) As Action
         Return Sub()
                    Clear()
-                   SetPace(pace)
+                   Write(pace)
                    Add($"Yer pace is now {GwensJourney.Pace.Name()}.")
                    ClearActions()
                    AddAction("Good", AddressOf CurrentArea)
@@ -29,11 +29,11 @@
         Add($"Yer current pace: {Pace.Name()}")
         Add("What would you like to change yer pace to?")
         ClearActions()
-        AddAction("Slowest", DoSetPace(1))
-        AddAction("Slow", DoSetPace(2))
-        AddAction("Medium", DoSetPace(3))
-        AddAction("Fast", DoSetPace(4))
-        AddAction("Fastest", DoSetPace(5))
+        AddAction(Pace.Name(1), DoSetPace(1))
+        AddAction(Pace.Name(2), DoSetPace(2))
+        AddAction(Pace.Name(3), DoSetPace(3))
+        AddAction(Pace.Name(4), DoSetPace(4))
+        AddAction(Pace.Name(5), DoSetPace(5))
         AddAction("Never mind", AddressOf CurrentArea)
     End Sub
     Sub Eat()
@@ -56,7 +56,7 @@
     End Sub
     Sub CurrentArea()
         Clear()
-        Add($"You are on the way to yer destination, and have {Read()} miles left to go.")
+        Add($"You are on the way to yer destination, and have {DistanceRemaining.Read()} miles left to go.")
         If IsHungry() Then
             Add($"You are {HungerState.Name()}.")
         End If

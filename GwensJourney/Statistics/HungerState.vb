@@ -4,11 +4,11 @@
     Private ReadOnly hungerStateNames As IReadOnlyDictionary(Of Integer, String) =
         New Dictionary(Of Integer, String) From
         {
-            {0, "not hungry"},
-            {1, "hungry"},
-            {2, "very hungry"},
-            {3, "starving"},
-            {4, "starved to death"}
+            {0, "[lime]not hungry[/]"},
+            {1, "[yellow]hungry[/]"},
+            {2, "[olive]very hungry[/]"},
+            {3, "[red]starving[/]"},
+            {4, "[grey]starved to death[/]"}
         }
     Friend Function IsHungry() As Boolean
         Return Context.Counter(CounterNames.HungerState) > 0

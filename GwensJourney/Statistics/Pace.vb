@@ -5,22 +5,25 @@
     Private ReadOnly paceNames As IReadOnlyDictionary(Of Integer, String) =
         New Dictionary(Of Integer, String) From
         {
-            {1, "Slowest"},
-            {2, "Slow"},
-            {3, "Medium"},
-            {4, "Fast"},
-            {5, "Fastest"}
+            {1, "[green]Slowest[/]"},
+            {2, "[aqua]Slow[/]"},
+            {3, "[blue]Medium[/]"},
+            {4, "[purple]Fast[/]"},
+            {5, "[fuchsia]Fastest[/]"}
         }
-    Friend Function GetPace() As Integer
+    Friend Function Read() As Integer
         Return Context.Counter(CounterNames.Pace)
     End Function
-    Friend Sub SetPace(pace As Integer)
+    Friend Sub Write(pace As Integer)
         Context.Counter(CounterNames.Pace) = Math.Clamp(pace, MINIMUM_PACE, MAXIMUM_PACE)
     End Sub
     Friend Function Name() As String
         Return paceNames(Context.Counter(CounterNames.Pace))
     End Function
+    Friend Function Name(index As Integer) As String
+        Return paceNames(Math.Clamp(index, MINIMUM_PACE, MAXIMUM_PACE))
+    End Function
     Friend Sub Reset()
-        SetPace(INITIAL_PACE)
+        Write(INITIAL_PACE)
     End Sub
 End Module
