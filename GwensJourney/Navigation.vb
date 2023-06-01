@@ -9,66 +9,66 @@
         End If
     End Sub
     Sub TheEnd()
-        Clear()
-        Add("You made it!")
+        Prompts.Clear()
+        Prompts.Add("You made it!")
         SetGameOver()
-        ClearActions()
-        AddAction("Huzzah!", AddressOf MainMenu.Run)
+        ActionItems.Clear()
+        ActionItems.Add("Huzzah!", AddressOf MainMenu.Run)
     End Sub
     Public Function DoSetPace(pace As Integer) As Action
         Return Sub()
-                   Clear()
+                   Prompts.Clear()
                    Write(pace)
-                   Add($"Yer pace is now {GwensJourney.Pace.Name()}.")
-                   ClearActions()
-                   AddAction("Good", AddressOf CurrentArea)
+                   Prompts.Add($"Yer pace is now {GwensJourney.Pace.Name()}.")
+                   ActionItems.Clear()
+                   ActionItems.Add("Good", AddressOf CurrentArea)
                End Sub
     End Function
     Sub ChangePace()
-        Clear()
-        Add($"Yer current pace: {Pace.Name()}")
-        Add("What would you like to change yer pace to?")
-        ClearActions()
-        AddAction(Pace.Name(1), DoSetPace(1))
-        AddAction(Pace.Name(2), DoSetPace(2))
-        AddAction(Pace.Name(3), DoSetPace(3))
-        AddAction(Pace.Name(4), DoSetPace(4))
-        AddAction(Pace.Name(5), DoSetPace(5))
-        AddAction("Never mind", AddressOf CurrentArea)
+        Prompts.Clear()
+        Prompts.Add($"Yer current pace: {Pace.Name()}")
+        Prompts.Add("What would you like to change yer pace to?")
+        ActionItems.Clear()
+        ActionItems.Add(Pace.Name(1), DoSetPace(1))
+        ActionItems.Add(Pace.Name(2), DoSetPace(2))
+        ActionItems.Add(Pace.Name(3), DoSetPace(3))
+        ActionItems.Add(Pace.Name(4), DoSetPace(4))
+        ActionItems.Add(Pace.Name(5), DoSetPace(5))
+        ActionItems.Add("Never mind", AddressOf CurrentArea)
     End Sub
     Sub Eat()
-        Clear()
-        ClearActions()
+        Prompts.Clear()
+        ActionItems.Clear()
         If Count() > 0 Then
-            Add("You eat one of yer snax.")
+            Prompts.Add("You eat one of yer snax.")
             Snax.Change(-1)
             HungerState.Change(-1)
-            Add($"Yer now {HungerState.Name()}.")
-            Add($"You have {Count()} snax left.")
+            Prompts.Add($"Yer now {HungerState.Name()}.")
+            Prompts.Add($"You have {Count()} snax left.")
             If IsHungry() Then
-                AddAction("Eat more", AddressOf Eat)
+                ActionItems.Add("Eat more", AddressOf Eat)
             End If
-            AddAction("Yum!", AddressOf CurrentArea)
+            ActionItems.Add("Yum!", AddressOf CurrentArea)
         Else
-            Add("Yer all out of snax.")
-            AddAction("Oh well...", AddressOf CurrentArea)
+            Prompts.Add("Yer all out of snax.")
+            ActionItems.Add("Oh well...", AddressOf CurrentArea)
         End If
     End Sub
     Sub CurrentArea()
-        Clear()
-        Add($"You are on the way to yer destination, and have {DistanceRemaining.Read()} miles left to go.")
+        Prompts.Clear()
+        Prompts.Add($"You are on the way to yer destination, and have {DistanceRemaining.Read()} miles left to go.")
         If IsHungry() Then
-            Add($"You are {HungerState.Name()}.")
+            Prompts.Add($"You are {HungerState.Name()}.")
         End If
         If Count() > 0 Then
-            Add($"You have {Count()} snax.")
+            Prompts.Add($"You have {Count()} snax.")
         End If
-        ClearActions()
-        AddAction("Keep Going", AddressOf KeepGoing)
-        AddAction("Change Pace", AddressOf ChangePace)
+        ActionItems.Clear()
+        ActionItems.Add("Keep Going", AddressOf KeepGoing)
+        ActionItems.Add("Change Pace", AddressOf ChangePace)
         If IsHungry() Then
-            AddAction("Eat", AddressOf Eat)
+            ActionItems.Add("Eat", AddressOf Eat)
         End If
-        AddAction("Main Menu", AddressOf MainMenu.Run)
+        ActionItems.Add("Main Menu", AddressOf MainMenu.Run)
     End Sub
 End Module

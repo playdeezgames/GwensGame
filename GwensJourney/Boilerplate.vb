@@ -1,16 +1,16 @@
 ﻿Module Boilerplate
     Sub QuitGame()
-        Clear()
-        ClearActions()
+        Prompts.Clear()
+        ActionItems.Clear()
     End Sub
 
 
     Sub ConfirmQuit()
-        Clear()
-        Add("Are you sure you want to quit?")
-        ClearActions()
-        AddAction("No", AddressOf MainMenu.Run)
-        AddAction("Yes", AddressOf QuitGame)
+        Prompts.Clear()
+        Prompts.Add("Are you sure you want to quit?")
+        ActionItems.Clear()
+        ActionItems.Add("No", AddressOf MainMenu.Run)
+        ActionItems.Add("Yes", AddressOf QuitGame)
     End Sub
 
     Sub StartGame()

@@ -1,9 +1,9 @@
 ﻿Friend Module MainLoop
     Friend Sub Run()
-        While HasActions()
+        While HasAny()
             Do
                 Show()
-            Loop Until SelectAction()
+            Loop Until Choose()
         End While
     End Sub
 End Module

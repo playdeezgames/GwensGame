@@ -1,13 +1,13 @@
 ﻿Friend Module MainMenu
     Friend Sub Run()
-        Clear()
-        Add("Main Menu:")
-        ClearActions()
+        Prompts.Clear()
+        Prompts.Add("Main Menu:")
+        ActionItems.Clear()
         If IsInPlay() Then
-            AddAction("Continue", AddressOf CurrentArea)
+            ActionItems.Add("Continue", AddressOf CurrentArea)
         Else
-            AddAction("Start", AddressOf Boilerplate.StartGame)
+            ActionItems.Add("Start", AddressOf Boilerplate.StartGame)
         End If
-        AddAction("Quit", AddressOf ConfirmQuit)
+        ActionItems.Add("Quit", AddressOf ConfirmQuit)
     End Sub
 End Module
