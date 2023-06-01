@@ -9,7 +9,7 @@
         End If
     End Sub
     Sub TheEnd()
-        ClearPrompts()
+        Clear()
         AddPrompt("You made it!")
         SetGameOver()
         ClearActions()
@@ -17,16 +17,16 @@
     End Sub
     Public Function DoSetPace(pace As Integer) As Action
         Return Sub()
-                   ClearPrompts()
+                   Clear()
                    SetPace(pace)
-                   AddPrompt($"Yer pace is now {GetPaceName()}.")
+                   AddPrompt($"Yer pace is now {GwensJourney.Pace.Name()}.")
                    ClearActions()
                    AddAction("Good", AddressOf CurrentArea)
                End Sub
     End Function
     Sub ChangePace()
-        ClearPrompts()
-        AddPrompt($"Yer current pace: {GetPaceName()}")
+        Clear()
+        AddPrompt($"Yer current pace: {Pace.Name()}")
         AddPrompt("What would you like to change yer pace to?")
         ClearActions()
         AddAction("Slowest", DoSetPace(1))
@@ -37,13 +37,13 @@
         AddAction("Never mind", AddressOf CurrentArea)
     End Sub
     Sub Eat()
-        ClearPrompts()
+        Clear()
         ClearActions()
         If Count() > 0 Then
             AddPrompt("You eat one of yer snax.")
             Snax.Change(-1)
             HungerState.Change(-1)
-            AddPrompt($"Yer now {Name()}.")
+            AddPrompt($"Yer now {HungerState.Name()}.")
             AddPrompt($"You have {Count()} snax left.")
             If IsHungry() Then
                 AddAction("Eat more", AddressOf Eat)
@@ -55,10 +55,10 @@
         End If
     End Sub
     Sub CurrentArea()
-        ClearPrompts()
+        Clear()
         AddPrompt($"You are on the way to yer destination, and have {Read()} miles left to go.")
         If IsHungry() Then
-            AddPrompt($"You are {Name()}.")
+            AddPrompt($"You are {HungerState.Name()}.")
         End If
         If Count() > 0 Then
             AddPrompt($"You have {Count()} snax.")

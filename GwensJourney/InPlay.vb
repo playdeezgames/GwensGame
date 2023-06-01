@@ -9,7 +9,7 @@
         Context.Flag(FlagNames.InPlay) = True
         Snax.Reset()
         DistanceRemaining.Reset()
-        ResetPace()
+        Pace.Reset()
         RollAbilities()
     End Sub
 End Module

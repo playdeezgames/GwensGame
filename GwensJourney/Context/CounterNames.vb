@@ -4,4 +4,5 @@
     Friend Const HungerCounter = "HungerCounter"
     Friend Const HungerState = "HungerState"
     Friend Const Constitution = "Constitution"
+    Friend Const Pace = "Pace"
 End Module

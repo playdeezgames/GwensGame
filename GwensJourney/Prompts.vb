@@ -1,15 +1,15 @@
 ﻿Module Prompts
     Private ReadOnly prompts As New List(Of String)
-    Sub ClearPrompts()
+    Sub Clear()
         prompts.Clear()
     End Sub
     Sub AddPrompt(prompt As String)
         prompts.Add(prompt)
     End Sub
     Sub ShowPrompts()
-        Console.WriteLine()
+        AnsiConsole.WriteLine()
         For Each prompt In prompts
-            Console.WriteLine(prompt)
+            AnsiConsole.MarkupLine(prompt)
         Next
     End Sub
 End Module

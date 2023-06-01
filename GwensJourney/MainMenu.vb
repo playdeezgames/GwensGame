@@ -1,6 +1,6 @@
 ﻿Friend Module MainMenu
     Friend Sub Run()
-        ClearPrompts()
+        Clear()
         AddPrompt("Main Menu:")
         ClearActions()
         If IsInPlay() Then
