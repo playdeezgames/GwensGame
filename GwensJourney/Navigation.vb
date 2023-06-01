@@ -1,6 +1,6 @@
 ﻿Module Navigation
     Sub KeepGoing()
-        ChangeDistanceRemaining(-GetPace())
+        DistanceRemaining.Change(-GetPace())
         ChangeHunger(GetPace())
         If HasArrived() Then
             TheEnd()
@@ -41,7 +41,7 @@
         ClearActions()
         If Count() > 0 Then
             AddPrompt("You eat one of yer snax.")
-            Change(-1)
+            Snax.Change(-1)
             ChangeHungerState(-1)
             AddPrompt($"Yer now {GetHungerStateName()}.")
             AddPrompt($"You have {Count()} snax left.")

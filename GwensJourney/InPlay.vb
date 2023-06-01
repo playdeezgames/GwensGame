@@ -7,8 +7,8 @@
     End Sub
     Friend Sub Initialize()
         Context.Flag(FlagNames.InPlay) = True
-        Reset()
-        ResetDistanceRemaining()
+        Snax.Reset()
+        DistanceRemaining.Reset()
         ResetPace()
         RollAbilities()
     End Sub
