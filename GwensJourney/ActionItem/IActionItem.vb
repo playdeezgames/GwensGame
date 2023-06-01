@@ -1,4 +1,4 @@
-﻿Public Interface IActionItem
+﻿Friend Interface IActionItem
     ReadOnly Property DisplayText As String
     Sub Perform()
 End Interface
