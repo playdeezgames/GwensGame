@@ -56,7 +56,7 @@
     End Sub
     Sub CurrentArea()
         ClearPrompts()
-        AddPrompt($"You are on the way to yer destination, and have {GetDistanceRemaining()} miles left to go.")
+        AddPrompt($"You are on the way to yer destination, and have {Read()} miles left to go.")
         If IsHungry() Then
             AddPrompt($"You are {GetHungerStateName()}.")
         End If
