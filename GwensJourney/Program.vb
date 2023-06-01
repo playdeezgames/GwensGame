@@ -1,8 +1,4 @@
 Module Program
-    Sub Welcome()
-        Console.WriteLine("Welcome to Gwen's Journey")
-    End Sub
-
     Sub MainLoop()
         While HasActions()
             Do
@@ -16,7 +12,7 @@ Module Program
     End Sub
     Sub Main(args As String())
         Console.Title = "Gwen's Journey"
-        Welcome()
+        Welcome.Run()
         MainMenu()
         MainLoop()
         GoodBye()
