@@ -1,13 +1,12 @@
-﻿Module InPlay
-    Private _inPlay As Boolean
-    Function IsInPlay() As Boolean
-        Return _inPlay
+﻿Friend Module InPlay
+    Friend Function IsInPlay() As Boolean
+        Return Context.Flag(FlagNames.InPlay)
     End Function
-    Sub SetGameOver()
-        _inPlay = False
+    Friend Sub SetGameOver()
+        Context.Flag(FlagNames.InPlay) = False
     End Sub
-    Sub StartGame()
-        _inPlay = True
+    Friend Sub Initialize()
+        Context.Flag(FlagNames.InPlay) = True
         ResetSnax()
         ResetDistanceRemaining()
         ResetPace()
