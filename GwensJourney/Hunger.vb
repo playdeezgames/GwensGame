@@ -1,11 +1,9 @@
-﻿Module Hunger
-    Private _hungerCounter As Integer
-    Private _hungerState As Integer
-    Public Function IsHungry() As Boolean
-        Return _hungerState > 0
+﻿Friend Module Hunger
+    Friend Function IsHungry() As Boolean
+        Return Context.Counter(CounterNames.HungerState) > 0
     End Function
-    Public Function GetHungerStateName() As String
-        Select Case _hungerState
+    Friend Function GetHungerStateName() As String
+        Select Case Context.Counter(CounterNames.HungerState)
             Case 0
                 Return "not hungry"
             Case 1
@@ -18,16 +16,15 @@
                 Return "starved to death"
         End Select
     End Function
-    Sub ChangeHungerState(delta As Integer)
-        _hungerState += delta
-        _hungerCounter = 0
+    Friend Sub ChangeHungerState(delta As Integer)
+        Context.Counter(CounterNames.HungerState) += delta
+        Context.Counter(CounterNames.HungerCounter) = 0
     End Sub
-    Sub ChangeHunger(delta As Integer)
-        _hungerCounter += delta
-        If Not CheckAbility(GetConstitution(), _hungerCounter) Then
-            _hungerState += 1
-            _hungerCounter = 0
+    Friend Sub ChangeHunger(delta As Integer)
+        Context.Counter(CounterNames.HungerCounter) += delta
+        If Not CheckAbility(GetConstitution(), Context.Counter(CounterNames.HungerCounter)) Then
+            Context.Counter(CounterNames.HungerState) += 1
+            Context.Counter(CounterNames.HungerCounter) = 0
         End If
     End Sub
-
 End Module
