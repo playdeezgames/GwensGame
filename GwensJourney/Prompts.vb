@@ -3,10 +3,10 @@
     Sub Clear()
         prompts.Clear()
     End Sub
-    Sub AddPrompt(prompt As String)
+    Sub Add(prompt As String)
         prompts.Add(prompt)
     End Sub
-    Sub ShowPrompts()
+    Sub Show()
         AnsiConsole.WriteLine()
         For Each prompt In prompts
             AnsiConsole.MarkupLine(prompt)

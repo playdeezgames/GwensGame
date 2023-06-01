@@ -2,7 +2,7 @@
     Friend Sub Run()
         While HasActions()
             Do
-                ShowPrompts()
+                Show()
             Loop Until SelectAction()
         End While
     End Sub

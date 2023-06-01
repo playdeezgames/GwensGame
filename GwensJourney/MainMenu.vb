@@ -1,7 +1,7 @@
 ﻿Friend Module MainMenu
     Friend Sub Run()
         Clear()
-        AddPrompt("Main Menu:")
+        Add("Main Menu:")
         ClearActions()
         If IsInPlay() Then
             AddAction("Continue", AddressOf CurrentArea)
