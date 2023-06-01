@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>GwensJourney</RootNamespace>
     <TargetFramework>net6.0</TargetFramework>
+    <OptionStrict>On</OptionStrict>
   </PropertyGroup>
 
 </Project>

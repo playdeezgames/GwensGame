@@ -3,8 +3,8 @@
     Function GetConstitution() As Integer
         Return _constitution
     End Function
-    Function GetAbilityBonus(abilityScore As Integer)
-        Return (abilityScore - abilityScore Mod 2) / 2 - 5
+    Function GetAbilityBonus(abilityScore As Integer) As Integer
+        Return (abilityScore - abilityScore Mod 2) \ 2 - 5
     End Function
     Function CheckAbility(abilityScore As Integer, difficulty As Integer) As Boolean
         Return D20() + GetAbilityBonus(abilityScore) >= difficulty
