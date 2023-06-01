@@ -7,7 +7,7 @@
             If IsInPlay() Then
                 AddInputItem("Continue Game", ShowStatus)
             Else
-                AddInputItem("Start Game", StartGame)
+                AddInputItem("Start Game", AddressOf StartGame)
             End If
             AddInputItem("Quit", QuitGame)
         End Sub

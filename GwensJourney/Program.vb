@@ -13,7 +13,7 @@ Module Program
     Sub Main(args As String())
         Console.Title = "Gwen's Journey"
         Welcome.Run()
-        MainMenu()
+        MainMenu.Run()
         MainLoop()
         GoodBye()
     End Sub
