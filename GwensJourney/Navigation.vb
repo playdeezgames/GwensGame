@@ -15,7 +15,7 @@
             AddPrompt("You made it!")
             SetGameOver()
             ClearActions()
-            AddAction("Huzzah!", MainMenu, ConsoleColor.Gray)
+            AddAction("Huzzah!", AddressOf MainMenu, ConsoleColor.Gray)
         End Sub
     Public Function DoSetPace(pace As Integer) As Action
         Return Sub()
@@ -74,6 +74,6 @@
             If IsHungry() Then
                 AddAction("Eat", Eat, ConsoleColor.Gray)
             End If
-            AddAction("Main Menu", MainMenu, ConsoleColor.Gray)
+            AddAction("Main Menu", AddressOf MainMenu, ConsoleColor.Gray)
         End Sub
 End Module
