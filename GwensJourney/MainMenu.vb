@@ -4,10 +4,10 @@
         AddPrompt("Main Menu:")
         ClearActions()
         If IsInPlay() Then
-            AddAction("Continue", CurrentArea, ConsoleColor.Gray)
+            AddAction("Continue", CurrentArea)
         Else
-            AddAction("Start", AddressOf Boilerplate.StartGame, ConsoleColor.Gray)
+            AddAction("Start", AddressOf Boilerplate.StartGame)
         End If
-        AddAction("Quit", AddressOf ConfirmQuit, ConsoleColor.Gray)
+        AddAction("Quit", AddressOf ConfirmQuit)
     End Sub
 End Module

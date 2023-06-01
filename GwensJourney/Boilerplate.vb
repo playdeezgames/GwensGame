@@ -9,8 +9,8 @@
         ClearPrompts()
         AddPrompt("Are you sure you want to quit?")
         ClearActions()
-        AddAction("No", AddressOf MainMenu.Run, ConsoleColor.Gray)
-        AddAction("Yes", AddressOf QuitGame, ConsoleColor.Gray)
+        AddAction("No", AddressOf MainMenu.Run)
+        AddAction("Yes", AddressOf QuitGame)
     End Sub
 
     Sub StartGame()
