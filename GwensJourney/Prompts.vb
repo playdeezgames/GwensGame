@@ -1,5 +1,5 @@
 ﻿Module Prompts
-    Private prompts As New List(Of String)
+    Private ReadOnly prompts As New List(Of String)
     Sub ClearPrompts()
         prompts.Clear()
     End Sub

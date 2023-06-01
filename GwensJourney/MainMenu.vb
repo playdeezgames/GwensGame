@@ -4,7 +4,7 @@
         AddPrompt("Main Menu:")
         ClearActions()
         If IsInPlay() Then
-            AddAction("Continue", CurrentArea)
+            AddAction("Continue", AddressOf CurrentArea)
         Else
             AddAction("Start", AddressOf Boilerplate.StartGame)
         End If
