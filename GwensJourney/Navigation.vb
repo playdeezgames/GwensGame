@@ -39,12 +39,12 @@
     Sub Eat()
         ClearPrompts()
         ClearActions()
-        If GetSnax() > 0 Then
+        If Count() > 0 Then
             AddPrompt("You eat one of yer snax.")
-            ChangeSnax(-1)
+            Change(-1)
             ChangeHungerState(-1)
             AddPrompt($"Yer now {GetHungerStateName()}.")
-            AddPrompt($"You have {GetSnax()} snax left.")
+            AddPrompt($"You have {Count()} snax left.")
             If IsHungry() Then
                 AddAction("Eat more", AddressOf Eat)
             End If
@@ -60,8 +60,8 @@
         If IsHungry() Then
             AddPrompt($"You are {GetHungerStateName()}.")
         End If
-        If GetSnax() > 0 Then
-            AddPrompt($"You have {GetSnax()} snax.")
+        If Count() > 0 Then
+            AddPrompt($"You have {Count()} snax.")
         End If
         ClearActions()
         AddAction("Keep Going", AddressOf KeepGoing)
