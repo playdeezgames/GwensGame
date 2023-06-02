@@ -14,7 +14,7 @@
     End Sub
 
     Sub StartGame()
-        InPlay.Initialize()
+        Context.Initialize()
         CurrentArea.Run()
     End Sub
 

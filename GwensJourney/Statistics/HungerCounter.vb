@@ -5,4 +5,8 @@
             HungerState.Change(1)
         End If
     End Sub
+
+    Friend Sub Reset()
+        Context.Counter(CounterNames.HungerCounter) = 0
+    End Sub
 End Module
