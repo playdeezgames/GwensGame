@@ -15,7 +15,7 @@
 
     Sub StartGame()
         InPlay.Initialize()
-        CurrentArea()
+        CurrentArea.Run()
     End Sub
 
 End Module

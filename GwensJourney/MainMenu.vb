@@ -4,7 +4,7 @@
         Prompts.Add("Main Menu:")
         ActionItems.Clear()
         If IsInPlay() Then
-            ActionItems.Add("Continue", AddressOf CurrentArea)
+            ActionItems.Add("Continue", AddressOf CurrentArea.Run)
         Else
             ActionItems.Add("Start", AddressOf Boilerplate.StartGame)
         End If

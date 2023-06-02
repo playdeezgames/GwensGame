@@ -1,7 +1,7 @@
 ﻿Friend Module Pace
     Private Const INITIAL_PACE As Integer = 3
-    Private Const MINIMUM_PACE = 1
-    Private Const MAXIMUM_PACE = 5
+    Friend Const MinimumPace = 1
+    Friend Const MaximumPace = 5
     Private ReadOnly paceNames As IReadOnlyDictionary(Of Integer, String) =
         New Dictionary(Of Integer, String) From
         {
@@ -15,13 +15,13 @@
         Return Context.Counter(CounterNames.Pace)
     End Function
     Friend Sub Write(pace As Integer)
-        Context.Counter(CounterNames.Pace) = Math.Clamp(pace, MINIMUM_PACE, MAXIMUM_PACE)
+        Context.Counter(CounterNames.Pace) = Math.Clamp(pace, MinimumPace, MaximumPace)
     End Sub
     Friend Function Name() As String
         Return paceNames(Context.Counter(CounterNames.Pace))
     End Function
     Friend Function Name(index As Integer) As String
-        Return paceNames(Math.Clamp(index, MINIMUM_PACE, MAXIMUM_PACE))
+        Return paceNames(Math.Clamp(index, MinimumPace, MaximumPace))
     End Function
     Friend Sub Reset()
         Write(INITIAL_PACE)
