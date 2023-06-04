@@ -1,7 +1,7 @@
 ﻿Friend Module GameOver
     Friend Sub Run(engine As IEngine)
         engine.Prompts.Clear()
-        LegacyPrompts.Add(engine, $"[red]Yer dead![/]")
+        engine.Prompts.Add($"[red]Yer dead![/]")
         LegacyActionItems.Clear()
         LegacyActionItems.Add("That sucks!", Sub() MainMenu.Run(engine))
     End Sub

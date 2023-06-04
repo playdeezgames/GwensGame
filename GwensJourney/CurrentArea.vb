@@ -1,12 +1,12 @@
 ﻿Friend Module CurrentArea
     Friend Sub Run(engine As IEngine)
         engine.Prompts.Clear()
-        LegacyPrompts.Add(engine, $"You are on the way to yer destination, and have {DistanceRemaining.Read()} miles left to go.")
+        engine.Prompts.Add($"You are on the way to yer destination, and have {DistanceRemaining.Read()} miles left to go.")
         If IsHungry() Then
-            LegacyPrompts.Add(engine, $"You are {HungerState.Name()}.")
+            engine.Prompts.Add($"You are {HungerState.Name()}.")
         End If
         If Count() > 0 Then
-            LegacyPrompts.Add(engine, $"You have {Count()} snax.")
+            engine.Prompts.Add($"You have {Count()} snax.")
         End If
         LegacyActionItems.Clear()
         LegacyActionItems.Add("Keep Going", Sub() KeepGoing.Run(engine))

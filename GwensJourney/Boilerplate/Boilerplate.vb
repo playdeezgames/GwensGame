@@ -7,7 +7,7 @@
 
     Sub ConfirmQuit(engine As IEngine)
         engine.Prompts.Clear()
-        LegacyPrompts.Add(engine, "Are you sure you want to quit?")
+        engine.Prompts.Add("Are you sure you want to quit?")
         LegacyActionItems.Clear()
         LegacyActionItems.Add("No", Sub() MainMenu.Run(engine))
         LegacyActionItems.Add("Yes", Sub() QuitGame(engine))

@@ -1,7 +1,7 @@
 ﻿Friend Module MainMenu
     Friend Sub Run(engine As IEngine)
         engine.Prompts.Clear()
-        LegacyPrompts.Add(engine, "Main Menu:")
+        engine.Prompts.Add("Main Menu:")
         LegacyActionItems.Clear()
         If IsInPlay() Then
             LegacyActionItems.Add("Continue", Sub() CurrentArea.Run(engine))
