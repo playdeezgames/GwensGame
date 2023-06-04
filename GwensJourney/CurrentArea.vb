@@ -2,6 +2,7 @@
     Friend Sub Run(engine As IEngine)
         engine.Prompts.Clear()
         engine.Prompts.Add($"You are on the way to yer destination, and have {DistanceRemaining.Read()} miles left to go.")
+        engine.Prompts.Add($"Yer pace is {Pace.Name()}.")
         If IsHungry() Then
             engine.Prompts.Add($"You are {HungerState.Name()}.")
         End If
