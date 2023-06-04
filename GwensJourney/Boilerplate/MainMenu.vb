@@ -8,6 +8,6 @@
         Else
             engine.ActionItems.Add("Embark!", AddressOf Boilerplate.Embark)
         End If
-        engine.ActionItems.Add("Quit", AddressOf ConfirmQuit)
+        engine.ActionItems.Add("Quit", AddressOf ConfirmQuit.Run)
     End Sub
 End Module
