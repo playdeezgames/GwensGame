@@ -1,5 +1,5 @@
-﻿Module Boilerplate
-    Sub Embark(engine As IEngine)
+﻿Module Embark
+    Sub Run(engine As IEngine)
         Context.Initialize()
         CurrentArea.Run(engine)
     End Sub

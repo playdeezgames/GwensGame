@@ -6,7 +6,7 @@
         If IsInPlay() Then
             engine.ActionItems.Add("Continue", AddressOf CurrentArea.Run)
         Else
-            engine.ActionItems.Add("Embark!", AddressOf Boilerplate.Embark)
+            engine.ActionItems.Add("Embark!", AddressOf Embark.Run)
         End If
         engine.ActionItems.Add("Quit", AddressOf ConfirmQuit.Run)
     End Sub
