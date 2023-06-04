@@ -1,8 +1,8 @@
 ﻿Friend Module GameOver
     Friend Sub Run()
-        Prompts.Clear()
-        Prompts.Add($"[red]Yer dead![/]")
-        ActionItems.Clear()
-        ActionItems.Add("That sucks!", AddressOf MainMenu.Run)
+        LegacyPrompts.Clear()
+        LegacyPrompts.Add($"[red]Yer dead![/]")
+        LegacyActionItems.Clear()
+        LegacyActionItems.Add("That sucks!", AddressOf MainMenu.Run)
     End Sub
 End Module

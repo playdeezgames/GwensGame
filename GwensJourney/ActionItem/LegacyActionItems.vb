@@ -1,6 +1,6 @@
 ﻿Imports System.Data
 
-Friend Module ActionItems
+Friend Module LegacyActionItems
     Private ReadOnly _actionItems As New List(Of IActionItem)
     Friend Sub Clear()
         _actionItems.Clear()

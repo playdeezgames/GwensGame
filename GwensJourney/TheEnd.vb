@@ -1,9 +1,9 @@
 ﻿Friend Module TheEnd
     Friend Sub Run()
-        Prompts.Clear()
-        Prompts.Add("You made it!")
+        LegacyPrompts.Clear()
+        LegacyPrompts.Add("You made it!")
         SetGameOver()
-        ActionItems.Clear()
-        ActionItems.Add("Huzzah!", AddressOf MainMenu.Run)
+        LegacyActionItems.Clear()
+        LegacyActionItems.Add("Huzzah!", AddressOf MainMenu.Run)
     End Sub
 End Module
