@@ -1,13 +1,13 @@
 ﻿Friend Module MainMenu
-    Friend Sub Run()
-        LegacyPrompts.Clear()
-        LegacyPrompts.Add("Main Menu:")
+    Friend Sub Run(engine As IEngine)
+        LegacyPrompts.Clear(engine)
+        LegacyPrompts.Add(engine, "Main Menu:")
         LegacyActionItems.Clear()
         If IsInPlay() Then
-            LegacyActionItems.Add("Continue", AddressOf CurrentArea.Run)
+            LegacyActionItems.Add("Continue", Sub() CurrentArea.Run(engine))
         Else
-            LegacyActionItems.Add("Start", AddressOf Boilerplate.StartGame)
+            LegacyActionItems.Add("Start", Sub() Boilerplate.StartGame(engine))
         End If
-        LegacyActionItems.Add("Quit", AddressOf ConfirmQuit)
+        LegacyActionItems.Add("Quit", Sub() ConfirmQuit(engine))
     End Sub
 End Module

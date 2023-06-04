@@ -1,20 +1,20 @@
 ﻿Friend Module Eat
-    Friend Sub Run()
-        LegacyPrompts.Clear()
+    Friend Sub Run(engine As IEngine)
+        LegacyPrompts.Clear(engine)
         LegacyActionItems.Clear()
         If Count() <= 0 Then
-            LegacyPrompts.Add("Yer all out of snax.")
-            LegacyActionItems.Add("Oh well...", AddressOf CurrentArea.Run)
+            LegacyPrompts.Add(engine, "Yer all out of snax.")
+            LegacyActionItems.Add("Oh well...", Sub() CurrentArea.Run(engine))
             Return
         End If
-        LegacyPrompts.Add("You eat one of yer snax.")
+        LegacyPrompts.Add(engine, "You eat one of yer snax.")
         Snax.Change(-1)
         HungerState.Change(-1)
-        LegacyPrompts.Add($"Yer now {HungerState.Name()}.")
-        LegacyPrompts.Add($"You have {Count()} snax left.")
+        LegacyPrompts.Add(engine, $"Yer now {HungerState.Name()}.")
+        LegacyPrompts.Add(engine, $"You have {Count()} snax left.")
         If IsHungry() Then
-            LegacyActionItems.Add("Eat more", AddressOf Run)
+            LegacyActionItems.Add("Eat more", Sub() Run(engine))
         End If
-        LegacyActionItems.Add("Yum!", AddressOf CurrentArea.Run)
+        LegacyActionItems.Add("Yum!", Sub() CurrentArea.Run(engine))
     End Sub
 End Module

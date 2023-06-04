@@ -1,21 +1,21 @@
 ﻿Friend Module ChangePace
-    Friend Sub Run()
-        LegacyPrompts.Clear()
-        LegacyPrompts.Add($"Yer current pace: {Pace.Name()}")
-        LegacyPrompts.Add("What would you like to change yer pace to?")
+    Friend Sub Run(engine As IEngine)
+        LegacyPrompts.Clear(engine)
+        LegacyPrompts.Add(engine, $"Yer current pace: {Pace.Name()}")
+        LegacyPrompts.Add(engine, "What would you like to change yer pace to?")
         LegacyActionItems.Clear()
         For paceValue = Pace.MinimumPace To Pace.MaximumPace
             Dim v = paceValue
             LegacyActionItems.Add(
                 Pace.Name(paceValue),
                 Sub()
-                    LegacyPrompts.Clear()
+                    LegacyPrompts.Clear(engine)
                     Write(v)
-                    LegacyPrompts.Add($"Yer pace is now {GwensJourney.Pace.Name()}.")
+                    LegacyPrompts.Add(engine, $"Yer pace is now {GwensJourney.Pace.Name()}.")
                     LegacyActionItems.Clear()
-                    LegacyActionItems.Add("Good", AddressOf CurrentArea.Run)
+                    LegacyActionItems.Add("Good", Sub() CurrentArea.Run(engine))
                 End Sub)
         Next
-        LegacyActionItems.Add("Never mind", AddressOf CurrentArea.Run)
+        LegacyActionItems.Add("Never mind", Sub() CurrentArea.Run(engine))
     End Sub
 End Module

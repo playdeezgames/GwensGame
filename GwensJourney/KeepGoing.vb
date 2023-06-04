@@ -1,16 +1,16 @@
 ﻿Friend Module KeepGoing
-    Friend Sub Run()
+    Friend Sub Run(engine As IEngine)
         DistanceRemaining.Change(-Pace.Read())
         HungerCounter.Change(Pace.Read())
         If HasArrived() Then
-            TheEnd.Run()
+            TheEnd.Run(engine)
             Return
         End If
         If IsDead() Then
             Context.SetGameOver()
-            GameOver.Run()
+            GameOver.Run(engine)
             Return
         End If
-        CurrentArea.Run()
+        CurrentArea.Run(engine)
     End Sub
 End Module

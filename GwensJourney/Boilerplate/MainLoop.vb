@@ -1,8 +1,8 @@
 ﻿Friend Module MainLoop
-    Friend Sub Run()
+    Friend Sub Run(engine As IEngine)
         While HasAny()
             Do
-                Show()
+                Show(engine)
             Loop Until Choose()
         End While
     End Sub

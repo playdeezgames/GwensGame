@@ -1,15 +1,11 @@
 ﻿Module LegacyPrompts
-    Private ReadOnly prompts As New List(Of String)
-    Sub Clear()
-        prompts.Clear()
+    Sub Clear(engine As IEngine)
+        engine.Prompts.Clear()
     End Sub
-    Sub Add(prompt As String)
-        prompts.Add(prompt)
+    Sub Add(engine As IEngine, prompt As String)
+        engine.Prompts.Add(prompt)
     End Sub
-    Sub Show()
-        AnsiConsole.WriteLine()
-        For Each prompt In prompts
-            AnsiConsole.MarkupLine(prompt)
-        Next
+    Sub Show(engine As IEngine)
+        engine.Prompts.Show()
     End Sub
 End Module
