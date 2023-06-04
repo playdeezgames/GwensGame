@@ -2,7 +2,7 @@
     Friend Sub Run(engine As IEngine)
         While HasAny()
             Do
-                Show(engine)
+                engine.Prompts.Show()
             Loop Until Choose()
         End While
     End Sub
