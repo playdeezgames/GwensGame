@@ -1,5 +1,5 @@
 ﻿Public Interface IPrompts
-    Sub Clear()
-    Sub Add(prompt As String)
-    Sub Show()
+    Function Clear() As IPrompts
+    Function Add(prompt As String) As IPrompts
+    Function Show() As IPrompts
 End Interface

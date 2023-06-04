@@ -1,16 +1,19 @@
 ﻿Public Class Prompts
     Implements IPrompts
     Private ReadOnly prompts As New List(Of String)
-    Public Sub Clear() Implements IPrompts.Clear
+    Public Function Clear() As IPrompts Implements IPrompts.Clear
         prompts.Clear()
-    End Sub
-    Public Sub Add(prompt As String) Implements IPrompts.Add
+        Return Me
+    End Function
+    Public Function Add(prompt As String) As IPrompts Implements IPrompts.Add
         prompts.Add(prompt)
-    End Sub
-    Public Sub Show() Implements IPrompts.Show
+        Return Me
+    End Function
+    Public Function Show() As IPrompts Implements IPrompts.Show
         AnsiConsole.WriteLine()
         For Each prompt In prompts
             AnsiConsole.MarkupLine(prompt)
         Next
-    End Sub
+        Return Me
+    End Function
 End Class
