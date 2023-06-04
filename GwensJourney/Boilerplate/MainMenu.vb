@@ -1,6 +1,6 @@
 ﻿Friend Module MainMenu
     Friend Sub Run(engine As IEngine)
-        LegacyPrompts.Clear(engine)
+        engine.Prompts.Clear()
         LegacyPrompts.Add(engine, "Main Menu:")
         LegacyActionItems.Clear()
         If IsInPlay() Then

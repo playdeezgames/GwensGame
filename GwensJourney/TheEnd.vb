@@ -1,6 +1,6 @@
 ﻿Friend Module TheEnd
     Friend Sub Run(engine As IEngine)
-        LegacyPrompts.Clear(engine)
+        engine.Prompts.Clear()
         LegacyPrompts.Add(engine, "You made it!")
         SetGameOver()
         LegacyActionItems.Clear()

@@ -1,6 +1,6 @@
 ﻿Friend Module CurrentArea
     Friend Sub Run(engine As IEngine)
-        LegacyPrompts.Clear(engine)
+        engine.Prompts.Clear()
         LegacyPrompts.Add(engine, $"You are on the way to yer destination, and have {DistanceRemaining.Read()} miles left to go.")
         If IsHungry() Then
             LegacyPrompts.Add(engine, $"You are {HungerState.Name()}.")

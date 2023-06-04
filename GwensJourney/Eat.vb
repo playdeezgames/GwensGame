@@ -1,6 +1,6 @@
 ﻿Friend Module Eat
     Friend Sub Run(engine As IEngine)
-        LegacyPrompts.Clear(engine)
+        engine.Prompts.Clear()
         LegacyActionItems.Clear()
         If Count() <= 0 Then
             LegacyPrompts.Add(engine, "Yer all out of snax.")
