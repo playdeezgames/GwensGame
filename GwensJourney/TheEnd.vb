@@ -4,6 +4,6 @@
         engine.Prompts.Add("You made it!")
         SetGameOver()
         engine.ActionItems.Clear()
-        engine.ActionItems.Add("Huzzah!", Sub() MainMenu.Run(engine))
+        engine.ActionItems.Add("Huzzah!", AddressOf MainMenu.Run)
     End Sub
 End Module

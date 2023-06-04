@@ -1,12 +1,16 @@
 ﻿Public Class ActionItems
     Implements IActionItems
     Private ReadOnly actionItems As New List(Of IActionItem)
+    Private ReadOnly engine As IEngine
+    Sub New(engine As IEngine)
+        Me.engine = engine
+    End Sub
     Public Function Clear() As IActionItems Implements IActionItems.Clear
         actionItems.Clear()
         Return Me
     End Function
-    Public Function Add(text As String, action As Action) As IActionItems Implements IActionItems.Add
-        actionItems.Add(New ActionItem(text, action))
+    Public Function Add(text As String, action As Action(Of IEngine)) As IActionItems Implements IActionItems.Add
+        actionItems.Add(New ActionItem(engine, text, action))
         Return Me
     End Function
     Public Function Choose() As Boolean Implements IActionItems.Choose

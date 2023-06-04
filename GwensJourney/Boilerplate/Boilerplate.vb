@@ -9,11 +9,11 @@
         engine.Prompts.Clear()
         engine.Prompts.Add("Are you sure you want to quit?")
         engine.ActionItems.Clear()
-        engine.ActionItems.Add("No", Sub() MainMenu.Run(engine))
-        engine.ActionItems.Add("Yes", Sub() QuitGame(engine))
+        engine.ActionItems.Add("No", AddressOf MainMenu.Run)
+        engine.ActionItems.Add("Yes", AddressOf QuitGame)
     End Sub
 
-    Sub StartGame(engine As IEngine)
+    Sub Embark(engine As IEngine)
         Context.Initialize()
         CurrentArea.Run(engine)
     End Sub

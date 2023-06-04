@@ -9,11 +9,11 @@
             engine.Prompts.Add($"You have {Count()} snax.")
         End If
         engine.ActionItems.Clear()
-        engine.ActionItems.Add("Keep Going", Sub() KeepGoing.Run(engine))
-        engine.ActionItems.Add("Change Pace", Sub() ChangePace.Run(engine))
+        engine.ActionItems.Add("Keep Going", AddressOf KeepGoing.Run)
+        engine.ActionItems.Add("Change Pace", AddressOf ChangePace.Run)
         If IsHungry() Then
-            engine.ActionItems.Add("Eat", Sub() Eat.Run(engine))
+            engine.ActionItems.Add("Eat", AddressOf Eat.Run)
         End If
-        engine.ActionItems.Add("Main Menu", Sub() MainMenu.Run(engine))
+        engine.ActionItems.Add("Main Menu", AddressOf MainMenu.Run)
     End Sub
 End Module

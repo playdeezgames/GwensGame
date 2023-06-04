@@ -4,7 +4,7 @@
         engine.ActionItems.Clear()
         If Count() <= 0 Then
             engine.Prompts.Add("Yer all out of snax.")
-            engine.ActionItems.Add("Oh well...", Sub() CurrentArea.Run(engine))
+            engine.ActionItems.Add("Oh well...", AddressOf CurrentArea.Run)
             Return
         End If
         engine.Prompts.Add("You eat one of yer snax.")
@@ -13,8 +13,8 @@
         engine.Prompts.Add($"Yer now {HungerState.Name()}.")
         engine.Prompts.Add($"You have {Count()} snax left.")
         If IsHungry() Then
-            engine.ActionItems.Add("Eat more", Sub() Run(engine))
+            engine.ActionItems.Add("Eat more", AddressOf Run)
         End If
-        engine.ActionItems.Add("Yum!", Sub() CurrentArea.Run(engine))
+        engine.ActionItems.Add("Yum!", AddressOf CurrentArea.Run)
     End Sub
 End Module

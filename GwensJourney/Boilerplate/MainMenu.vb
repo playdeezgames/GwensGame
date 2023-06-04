@@ -4,10 +4,10 @@
         engine.Prompts.Add("Main Menu:")
         engine.ActionItems.Clear()
         If IsInPlay() Then
-            engine.ActionItems.Add("Continue", Sub() CurrentArea.Run(engine))
+            engine.ActionItems.Add("Continue", AddressOf CurrentArea.Run)
         Else
-            engine.ActionItems.Add("Start", Sub() Boilerplate.StartGame(engine))
+            engine.ActionItems.Add("Embark!", AddressOf Boilerplate.Embark)
         End If
-        engine.ActionItems.Add("Quit", Sub() ConfirmQuit(engine))
+        engine.ActionItems.Add("Quit", AddressOf ConfirmQuit)
     End Sub
 End Module
