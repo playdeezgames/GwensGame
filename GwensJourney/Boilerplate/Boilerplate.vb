@@ -1,16 +1,16 @@
 ﻿Module Boilerplate
     Sub QuitGame(engine As IEngine)
         engine.Prompts.Clear()
-        LegacyActionItems.Clear()
+        engine.ActionItems.Clear()
     End Sub
 
 
     Sub ConfirmQuit(engine As IEngine)
         engine.Prompts.Clear()
         engine.Prompts.Add("Are you sure you want to quit?")
-        LegacyActionItems.Clear()
-        LegacyActionItems.Add("No", Sub() MainMenu.Run(engine))
-        LegacyActionItems.Add("Yes", Sub() QuitGame(engine))
+        engine.ActionItems.Clear()
+        engine.ActionItems.Add("No", Sub() MainMenu.Run(engine))
+        engine.ActionItems.Add("Yes", Sub() QuitGame(engine))
     End Sub
 
     Sub StartGame(engine As IEngine)

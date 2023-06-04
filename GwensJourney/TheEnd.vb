@@ -3,7 +3,7 @@
         engine.Prompts.Clear()
         engine.Prompts.Add("You made it!")
         SetGameOver()
-        LegacyActionItems.Clear()
-        LegacyActionItems.Add("Huzzah!", Sub() MainMenu.Run(engine))
+        engine.ActionItems.Clear()
+        engine.ActionItems.Add("Huzzah!", Sub() MainMenu.Run(engine))
     End Sub
 End Module

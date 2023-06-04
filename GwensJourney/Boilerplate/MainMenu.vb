@@ -2,12 +2,12 @@
     Friend Sub Run(engine As IEngine)
         engine.Prompts.Clear()
         engine.Prompts.Add("Main Menu:")
-        LegacyActionItems.Clear()
+        engine.ActionItems.Clear()
         If IsInPlay() Then
-            LegacyActionItems.Add("Continue", Sub() CurrentArea.Run(engine))
+            engine.ActionItems.Add("Continue", Sub() CurrentArea.Run(engine))
         Else
-            LegacyActionItems.Add("Start", Sub() Boilerplate.StartGame(engine))
+            engine.ActionItems.Add("Start", Sub() Boilerplate.StartGame(engine))
         End If
-        LegacyActionItems.Add("Quit", Sub() ConfirmQuit(engine))
+        engine.ActionItems.Add("Quit", Sub() ConfirmQuit(engine))
     End Sub
 End Module

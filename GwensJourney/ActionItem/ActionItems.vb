@@ -1,12 +1,14 @@
 ﻿Public Class ActionItems
     Implements IActionItems
     Private ReadOnly actionItems As New List(Of IActionItem)
-    Public Sub Clear() Implements IActionItems.Clear
+    Public Function Clear() As IActionItems Implements IActionItems.Clear
         actionItems.Clear()
-    End Sub
-    Public Sub Add(text As String, action As Action) Implements IActionItems.Add
+        Return Me
+    End Function
+    Public Function Add(text As String, action As Action) As IActionItems Implements IActionItems.Add
         actionItems.Add(New ActionItem(text, action))
-    End Sub
+        Return Me
+    End Function
     Public Function Choose() As Boolean Implements IActionItems.Choose
         If actionItems.Count() = 1 Then
             actionItems(0).Perform()

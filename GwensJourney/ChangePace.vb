@@ -3,19 +3,19 @@
         engine.Prompts.Clear()
         engine.Prompts.Add($"Yer current pace: {Pace.Name()}")
         engine.Prompts.Add("What would you like to change yer pace to?")
-        LegacyActionItems.Clear()
+        engine.ActionItems.Clear()
         For paceValue = Pace.MinimumPace To Pace.MaximumPace
             Dim v = paceValue
-            LegacyActionItems.Add(
+            engine.ActionItems.Add(
                 Pace.Name(paceValue),
                 Sub()
                     engine.Prompts.Clear()
                     Write(v)
                     engine.Prompts.Add($"Yer pace is now {GwensJourney.Pace.Name()}.")
-                    LegacyActionItems.Clear()
-                    LegacyActionItems.Add("Good", Sub() CurrentArea.Run(engine))
+                    engine.ActionItems.Clear()
+                    engine.ActionItems.Add("Good", Sub() CurrentArea.Run(engine))
                 End Sub)
         Next
-        LegacyActionItems.Add("Never mind", Sub() CurrentArea.Run(engine))
+        engine.ActionItems.Add("Never mind", Sub() CurrentArea.Run(engine))
     End Sub
 End Module

@@ -8,12 +8,12 @@
         If Count() > 0 Then
             engine.Prompts.Add($"You have {Count()} snax.")
         End If
-        LegacyActionItems.Clear()
-        LegacyActionItems.Add("Keep Going", Sub() KeepGoing.Run(engine))
-        LegacyActionItems.Add("Change Pace", Sub() ChangePace.Run(engine))
+        engine.ActionItems.Clear()
+        engine.ActionItems.Add("Keep Going", Sub() KeepGoing.Run(engine))
+        engine.ActionItems.Add("Change Pace", Sub() ChangePace.Run(engine))
         If IsHungry() Then
-            LegacyActionItems.Add("Eat", Sub() Eat.Run(engine))
+            engine.ActionItems.Add("Eat", Sub() Eat.Run(engine))
         End If
-        LegacyActionItems.Add("Main Menu", Sub() MainMenu.Run(engine))
+        engine.ActionItems.Add("Main Menu", Sub() MainMenu.Run(engine))
     End Sub
 End Module
