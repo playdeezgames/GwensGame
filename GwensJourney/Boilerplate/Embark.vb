@@ -1,6 +1,6 @@
 ﻿Module Embark
     Sub Run(engine As IEngine)
-        Context.Initialize()
+        LegacyContext.Initialize()
         CurrentArea.Run(engine)
     End Sub
 End Module

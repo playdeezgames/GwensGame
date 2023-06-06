@@ -1,15 +1,20 @@
-﻿Friend Module DistanceRemaining
+﻿Friend Class DistanceRemaining
+    Implements IDistanceRemaining
     Private Const INITIAL_DISTANCE_REMAINING = 2000
-    Friend Function Read() As Integer
-        Return Context.Counter(CounterNames.DistanceRemaining)
-    End Function
-    Friend Sub Change(delta As Integer)
-        Context.Counter(CounterNames.DistanceRemaining) += delta
+    Private ReadOnly _context As IContext
+    Sub New(context As IContext)
+        _context = context
     End Sub
-    Friend Function HasArrived() As Boolean
-        Return Read() <= 0
-    End Function
-    Friend Sub Reset()
+    Public Sub Change(delta As Integer) Implements IDistanceRemaining.Change
+        _context.Counter(CounterNames.DistanceRemaining) += delta
+    End Sub
+    Public Sub Reset() Implements IDistanceRemaining.Reset
         Change(INITIAL_DISTANCE_REMAINING - Read())
     End Sub
-End Module
+    Public Function Read() As Integer Implements IDistanceRemaining.Read
+        Return _context.Counter(CounterNames.DistanceRemaining)
+    End Function
+    Public Function HasArrived() As Boolean Implements IDistanceRemaining.HasArrived
+        Return Read() <= 0
+    End Function
+End Class

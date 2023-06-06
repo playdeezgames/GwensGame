@@ -8,9 +8,9 @@
             Return
         End If
         engine.Prompts.Add("You eat one of yer snax.")
-        Snax.Change(-1)
-        HungerState.Change(-1)
-        engine.Prompts.Add($"Yer now {HungerState.Name()}.")
+        LegacySnax.Change(-1)
+        LegacyHungerState.Change(-1)
+        engine.Prompts.Add($"Yer now {LegacyHungerState.Name()}.")
         engine.Prompts.Add($"You have {Count()} snax left.")
         If IsHungry() Then
             engine.ActionItems.Add("Eat more", AddressOf Run)

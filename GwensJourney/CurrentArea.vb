@@ -1,10 +1,10 @@
 ﻿Friend Module CurrentArea
     Friend Sub Run(engine As IEngine)
         engine.Prompts.Clear()
-        engine.Prompts.Add($"You are on the way to yer destination, and have {DistanceRemaining.Read()} miles left to go.")
-        engine.Prompts.Add($"Yer pace is {Pace.Name()}.")
+        engine.Prompts.Add($"You are on the way to yer destination, and have {LegacyDistanceRemaining.Read()} miles left to go.")
+        engine.Prompts.Add($"Yer pace is {LegacyPace.Name()}.")
         If IsHungry() Then
-            engine.Prompts.Add($"You are {HungerState.Name()}.")
+            engine.Prompts.Add($"You are {LegacyHungerState.Name()}.")
         End If
         If Count() > 0 Then
             engine.Prompts.Add($"You have {Count()} snax.")

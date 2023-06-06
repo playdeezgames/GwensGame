@@ -1,10 +1,10 @@
-﻿Friend Module Snax
+﻿Friend Module LegacySnax
     Private Const INITIAL_SNAX As Integer = 10
     Friend Function Count() As Integer
-        Return Context.Counter(CounterNames.Snax)
+        Return LegacyContext.Counter(CounterNames.Snax)
     End Function
     Friend Sub Change(delta As Integer)
-        Context.Counter(CounterNames.Snax) += delta
+        LegacyContext.Counter(CounterNames.Snax) += delta
     End Sub
     Friend Sub Reset()
         Change(INITIAL_SNAX - Count())

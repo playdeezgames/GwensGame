@@ -1,4 +1,4 @@
-﻿Friend Module Pace
+﻿Friend Module LegacyPace
     Private Const INITIAL_PACE As Integer = 3
     Friend Const MinimumPace = 1
     Friend Const MaximumPace = 5
@@ -12,13 +12,13 @@
             {5, "[fuchsia]Fastest[/]"}
         }
     Friend Function Read() As Integer
-        Return Context.Counter(CounterNames.Pace)
+        Return LegacyContext.Counter(CounterNames.Pace)
     End Function
     Friend Sub Write(pace As Integer)
-        Context.Counter(CounterNames.Pace) = Math.Clamp(pace, MinimumPace, MaximumPace)
+        LegacyContext.Counter(CounterNames.Pace) = Math.Clamp(pace, MinimumPace, MaximumPace)
     End Sub
     Friend Function Name() As String
-        Return paceNames(Context.Counter(CounterNames.Pace))
+        Return paceNames(LegacyContext.Counter(CounterNames.Pace))
     End Function
     Friend Function Name(index As Integer) As String
         Return paceNames(Math.Clamp(index, MinimumPace, MaximumPace))
