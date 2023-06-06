@@ -5,4 +5,6 @@
     Friend Const HungerState = "HungerState"
     Friend Const Constitution = "Constitution"
     Friend Const Pace = "Pace"
+    Friend Const ForagingDifficulty = "ForagingDifficulty"
+    Friend Const ForagingAbundance = "ForagingAbundance"
 End Module

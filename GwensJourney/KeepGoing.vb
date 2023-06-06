@@ -11,6 +11,8 @@
             GameOver.Run(engine)
             Return
         End If
+        context.Foraging.GenerateDifficulty()
+        context.Foraging.GenerateAbundance()
         CurrentArea.Run(engine, context)
     End Sub
 End Module

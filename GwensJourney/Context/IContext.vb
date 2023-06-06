@@ -10,4 +10,5 @@
     ReadOnly Property HungerState As IHungerState
     ReadOnly Property Pace As IPace
     ReadOnly Property Snax As ISnax
+    ReadOnly Property Foraging As IForaging
 End Interface

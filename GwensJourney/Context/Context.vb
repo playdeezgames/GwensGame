@@ -64,6 +64,12 @@
         End Get
     End Property
 
+    Public ReadOnly Property Foraging As IForaging Implements IContext.Foraging
+        Get
+            Return New Foraging(Me)
+        End Get
+    End Property
+
     Public Sub SetGameOver() Implements IContext.SetGameOver
         Flag(FlagNames.InPlay) = False
     End Sub
@@ -75,6 +81,7 @@
         Abilities.RollAbilities()
         HungerState.Reset()
         HungerCounter.Reset()
+        Foraging.Reset()
     End Sub
     Public Function IsInPlay() As Boolean Implements IContext.IsInPlay
         Return Flag(FlagNames.InPlay)
