@@ -1,28 +1,30 @@
 ﻿Friend Class Context
     Implements IContext
-    Private ReadOnly _flags As New HashSet(Of String)
-    Private ReadOnly _counters As New Dictionary(Of String, Integer)
+    Private ReadOnly _contextData As ContextData
+    Sub New(contextData As ContextData)
+        _contextData = contextData
+    End Sub
     Public Property Flag(flagName As String) As Boolean Implements IContext.Flag
         Get
-            Return _flags.Contains(flagName)
+            Return _contextData.Flags.Contains(flagName)
         End Get
         Set(value As Boolean)
             If value Then
-                _flags.Add(flagName)
+                _contextData.Flags.Add(flagName)
             Else
-                _flags.Remove(flagName)
+                _contextData.Flags.Remove(flagName)
             End If
         End Set
     End Property
     Public Property Counter(counterName As String) As Integer Implements IContext.Counter
         Get
-            If _counters.ContainsKey(counterName) Then
-                Return _counters(counterName)
+            If _contextData.Counters.ContainsKey(counterName) Then
+                Return _contextData.Counters(counterName)
             End If
             Return 0
         End Get
         Set(value As Integer)
-            _counters(counterName) = value
+            _contextData.Counters(counterName) = value
         End Set
     End Property
 
