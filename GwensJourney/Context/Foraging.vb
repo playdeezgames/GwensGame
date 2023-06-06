@@ -14,4 +14,25 @@
         GenerateDifficulty()
         GenerateAbundance()
     End Sub
+
+    Public Function DifficultyName() As String Implements IForaging.DifficultyName
+        Select Case _context.Counter(CounterNames.ForagingDifficulty)
+            Case Is < 5
+                Return "[aqua]Very easy[/]"
+            Case 5 To 9
+                Return "[lime]Easy[/]"
+            Case 10 To 14
+                Return "[yellow]Challenging[/]"
+            Case 15 To 19
+                Return "[red]Difficult[/]"
+            Case Is > 19
+                Return "[maroon]Impossible[/]"
+            Case Else
+                Throw New NotImplementedException
+        End Select
+    End Function
+
+    Public Function CanForage() As Boolean Implements IForaging.CanForage
+        Return _context.Counter(CounterNames.ForagingAbundance) > 0
+    End Function
 End Class
