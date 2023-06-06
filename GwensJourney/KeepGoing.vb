@@ -1,16 +1,16 @@
 ﻿Friend Module KeepGoing
-    Friend Sub Run(engine As IEngine)
-        LegacyDistanceRemaining.Change(-LegacyPace.Read())
-        LegacyHungerCounter.Change(LegacyPace.Read())
-        If HasArrived() Then
-            TheEnd.Run(engine)
+    Friend Sub Run(engine As IEngine, context As IContext)
+        context.DistanceRemaining.Change(-context.Pace.Read())
+        context.HungerCounter.Change(context.Pace.Read())
+        If context.DistanceRemaining.HasArrived() Then
+            TheEnd.Run(engine, context)
             Return
         End If
-        If IsDead() Then
-            LegacyContext.SetGameOver()
+        If context.HungerState.IsDead() Then
+            context.SetGameOver()
             GameOver.Run(engine)
             Return
         End If
-        CurrentArea.Run(engine)
+        CurrentArea.Run(engine, context)
     End Sub
 End Module

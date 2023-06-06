@@ -9,13 +9,13 @@
         actionItems.Clear()
         Return Me
     End Function
-    Public Function Add(text As String, action As Action(Of IEngine)) As IActionItems Implements IActionItems.Add
+    Public Function Add(text As String, action As Action(Of IEngine, IContext)) As IActionItems Implements IActionItems.Add
         actionItems.Add(New ActionItem(engine, text, action))
         Return Me
     End Function
-    Public Function Choose() As Boolean Implements IActionItems.Choose
+    Public Function Choose(context As IContext) As Boolean Implements IActionItems.Choose
         If actionItems.Count() = 1 Then
-            actionItems(0).Perform()
+            actionItems(0).Perform(context)
             Return True
         End If
         Dim index As Integer = 1
@@ -32,7 +32,7 @@
                 AnsiConsole.MarkupLine($"[red]Please enter a number between 1 and {actionItems.Count}.[/]")
             End If
         Loop Until itemIndex >= 1 AndAlso itemIndex <= actionItems.Count
-        actionItems(itemIndex - 1).Perform()
+        actionItems(itemIndex - 1).Perform(context)
         Return True
     End Function
     Public Function HasAny() As Boolean Implements IActionItems.HasAny

@@ -5,7 +5,7 @@
         _context = context
     End Sub
     Public Sub RollAbilities() Implements IAbilities.RollAbilities
-        LegacyContext.Counter(CounterNames.Constitution) = RollAbility()
+        _context.Counter(CounterNames.Constitution) = RollAbility()
     End Sub
     Public Function GetConstitution() As Integer Implements IAbilities.GetConstitution
         Return _context.Counter(CounterNames.Constitution)

@@ -1,23 +1,23 @@
 ﻿Friend Module ChangePace
-    Friend Sub Run(engine As IEngine)
+    Friend Sub Run(engine As IEngine, context As IContext)
         engine.Prompts.Clear()
-        engine.Prompts.Add($"Yer current pace: {LegacyPace.Name()}")
+        engine.Prompts.Add($"Yer current pace: {context.Pace.Name()}")
         engine.Prompts.Add("What would you like to change yer pace to?")
         engine.ActionItems.Clear()
-        For paceValue = LegacyPace.MinimumPace To LegacyPace.MaximumPace
+        For paceValue = Pace.MinimumPace To Pace.MaximumPace
             Dim v = paceValue
             engine.ActionItems.Add(
-                LegacyPace.Name(paceValue),
-                SetNewPace(engine, v))
+                context.Pace.Name(paceValue),
+                SetNewPace(v))
         Next
         engine.ActionItems.Add("Never mind", AddressOf CurrentArea.Run)
     End Sub
 
-    Private Function SetNewPace(engine As IEngine, paceValue As Integer) As Action(Of IEngine)
-        Return Sub(e)
+    Private Function SetNewPace(paceValue As Integer) As Action(Of IEngine, IContext)
+        Return Sub(e, c)
                    e.Prompts.Clear()
-                   Write(paceValue)
-                   e.Prompts.Add($"Yer pace is now {GwensJourney.LegacyPace.Name()}.")
+                   c.Pace.Write(paceValue)
+                   e.Prompts.Add($"Yer pace is now {c.Pace.Name()}.")
                    e.ActionItems.Clear()
                    e.ActionItems.Add("Good", AddressOf CurrentArea.Run)
                End Sub

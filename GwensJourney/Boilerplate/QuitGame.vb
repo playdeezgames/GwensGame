@@ -1,5 +1,5 @@
 ﻿Module QuitGame
-    Sub Run(engine As IEngine)
+    Sub Run(engine As IEngine, context As IContext)
         engine.Prompts.Clear()
         engine.ActionItems.Clear()
     End Sub

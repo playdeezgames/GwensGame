@@ -1,9 +1,9 @@
 ﻿Friend Module MainMenu
-    Friend Sub Run(engine As IEngine)
+    Friend Sub Run(engine As IEngine, context As IContext)
         engine.Prompts.Clear()
         engine.Prompts.Add("Main Menu:")
         engine.ActionItems.Clear()
-        If IsInPlay() Then
+        If context.IsInPlay() Then
             engine.ActionItems.Add("Continue", AddressOf CurrentArea.Run)
         Else
             engine.ActionItems.Add("Embark!", AddressOf Embark.Run)
