@@ -5,7 +5,7 @@
     <RootNamespace>GwensJourney</RootNamespace>
     <TargetFramework>net6.0</TargetFramework>
     <OptionStrict>On</OptionStrict>
-    <ImportedNamespaces>Spectre.Console=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,GwensJourney=True</ImportedNamespaces>
+    <ImportedNamespaces>Spectre.Console=False,SPLORR.Game=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,GwensJourney=True</ImportedNamespaces>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -22,6 +22,11 @@
 
   <ItemGroup>
     <Import Include="Spectre.Console" />
+    <Import Include="SPLORR.Game" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\abettor-of-splorr\src\SPLORR.Game\SPLORR.Game.vbproj" />
   </ItemGroup>
 
 </Project>
