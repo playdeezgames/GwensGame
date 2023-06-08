@@ -1,11 +1,11 @@
 ﻿Friend Module Dice
     Friend Function D4() As Integer
-        Return _random.Next(1, 5)
+        Return RNG.FromRange(1, 4)
     End Function
     Friend Function D6() As Integer
-        Return _random.Next(1, 7)
+        Return RNG.FromRange(1, 6)
     End Function
     Friend Function D20() As Integer
-        Return _random.Next(1, 21)
+        Return RNG.FromRange(1, 20)
     End Function
 End Module
