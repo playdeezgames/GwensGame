@@ -70,6 +70,12 @@
         End Get
     End Property
 
+    Public ReadOnly Property Shortcut As IShortcut Implements IContext.Shortcut
+        Get
+            Return New Shortcut(Me)
+        End Get
+    End Property
+
     Public Sub SetGameOver() Implements IContext.SetGameOver
         Flag(FlagNames.InPlay) = False
     End Sub
@@ -81,7 +87,7 @@
         Abilities.RollAbilities()
         HungerState.Reset()
         HungerCounter.Reset()
-        Foraging.Reset()
+        NewArea.Run(Me)
     End Sub
     Public Function IsInPlay() As Boolean Implements IContext.IsInPlay
         Return Flag(FlagNames.InPlay)

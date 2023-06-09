@@ -12,6 +12,9 @@
         If context.Foraging.CanForage() Then
             engine.Prompts.Add($"Foraging here is {context.Foraging.DifficultyName()}.")
         End If
+        If context.Shortcut.HasShortcut Then
+            engine.Prompts.Add("There is a potential shortcut here!")
+        End If
         engine.ActionItems.Clear()
         engine.ActionItems.Add("Keep Going", AddressOf KeepGoing.Run)
         engine.ActionItems.Add("Change Pace", AddressOf ChangePace.Run)
@@ -20,6 +23,9 @@
         End If
         If context.Foraging.CanForage() Then
             engine.ActionItems.Add("Forage", AddressOf Forage.Run)
+        End If
+        If context.Shortcut.HasShortcut Then
+            engine.ActionItems.Add("Take shortcut", AddressOf TakeShortcut.Run)
         End If
         engine.ActionItems.Add("Main Menu", AddressOf MainMenu.Run)
     End Sub

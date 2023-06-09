@@ -11,4 +11,5 @@
     ReadOnly Property Pace As IPace
     ReadOnly Property Snax As ISnax
     ReadOnly Property Foraging As IForaging
+    ReadOnly Property Shortcut As IShortcut
 End Interface

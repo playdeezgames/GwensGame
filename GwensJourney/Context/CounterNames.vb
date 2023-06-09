@@ -8,4 +8,5 @@
     Friend Const ForagingDifficulty = "ForagingDifficulty"
     Friend Const ForagingAbundance = "ForagingAbundance"
     Friend Const Wisdom = "Wisdom"
+    Friend Const ShortcutDistance = "ShortcutDistance"
 End Module

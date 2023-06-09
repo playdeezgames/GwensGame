@@ -24,11 +24,6 @@
     Public Sub GenerateAbundance() Implements IForaging.GenerateAbundance
         _context.Counter(CounterNames.ForagingAbundance) = D4() + D4()
     End Sub
-    Public Sub Reset() Implements IForaging.Reset
-        GenerateDifficulty()
-        GenerateAbundance()
-    End Sub
-
     Public Function DifficultyName() As String Implements IForaging.DifficultyName
         Select Case _context.Counter(CounterNames.ForagingDifficulty)
             Case Is < 5
