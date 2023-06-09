@@ -4,7 +4,7 @@
         engine.ActionItems.Clear()
         If context.Snax.Count() <= 0 Then
             engine.Prompts.Add("Yer all out of snax.")
-            engine.ActionItems.Add("Oh well...", AddressOf CurrentArea.Run)
+            engine.ActionItems.Add("Oh well...", AddressOf Neutral.Run)
             Return
         End If
         engine.Prompts.Add("You eat one of yer snax.")
@@ -15,6 +15,6 @@
         If context.HungerState.IsHungry() Then
             engine.ActionItems.Add("Eat more", AddressOf Run)
         End If
-        engine.ActionItems.Add("Yum!", AddressOf CurrentArea.Run)
+        engine.ActionItems.Add("Yum!", AddressOf Neutral.Run)
     End Sub
 End Module

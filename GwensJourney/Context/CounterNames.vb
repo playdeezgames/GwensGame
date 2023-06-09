@@ -7,4 +7,5 @@
     Friend Const Pace = "Pace"
     Friend Const ForagingDifficulty = "ForagingDifficulty"
     Friend Const ForagingAbundance = "ForagingAbundance"
+    Friend Const Wisdom = "Wisdom"
 End Module

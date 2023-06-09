@@ -6,6 +6,7 @@
     End Sub
     Public Sub RollAbilities() Implements IAbilities.RollAbilities
         _context.Counter(CounterNames.Constitution) = RollAbility()
+        _context.Counter(CounterNames.Wisdom) = RollAbility()
     End Sub
     Public Function GetConstitution() As Integer Implements IAbilities.GetConstitution
         Return _context.Counter(CounterNames.Constitution)
@@ -13,6 +14,11 @@
     Public Function CheckAbility(abilityScore As Integer, difficulty As Integer) As Boolean Implements IAbilities.CheckAbility
         Return D20() + GetAbilityBonus(abilityScore) >= difficulty
     End Function
+
+    Public Function GetWisdom() As Integer Implements IAbilities.GetWisdom
+        Return _context.Counter(CounterNames.Wisdom)
+    End Function
+
     Private Function RollAbility() As Integer
         Return D6() + D6() + D6()
     End Function

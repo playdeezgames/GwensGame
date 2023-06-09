@@ -10,7 +10,7 @@
                 context.Pace.Name(paceValue),
                 SetNewPace(v))
         Next
-        engine.ActionItems.Add("Never mind", AddressOf CurrentArea.Run)
+        engine.ActionItems.Add("Never mind", AddressOf Neutral.Run)
     End Sub
 
     Private Function SetNewPace(paceValue As Integer) As Action(Of IEngine, IContext)
@@ -19,7 +19,7 @@
                    c.Pace.Write(paceValue)
                    e.Prompts.Add($"Yer pace is now {c.Pace.Name()}.")
                    e.ActionItems.Clear()
-                   e.ActionItems.Add("Good", AddressOf CurrentArea.Run)
+                   e.ActionItems.Add("Good", AddressOf Neutral.Run)
                End Sub
     End Function
 End Module

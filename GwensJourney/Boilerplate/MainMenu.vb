@@ -4,7 +4,7 @@
         engine.Prompts.Add("Main Menu:")
         engine.ActionItems.Clear()
         If context.IsInPlay() Then
-            engine.ActionItems.Add("Continue", AddressOf CurrentArea.Run)
+            engine.ActionItems.Add("Continue", AddressOf Neutral.Run)
         Else
             engine.ActionItems.Add("Embark!", AddressOf Embark.Run)
         End If
