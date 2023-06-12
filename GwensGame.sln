@@ -7,12 +7,21 @@ Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "GwensJourney", "GwensJourne
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_STUFF", "_STUFF", "{2B1AA417-1685-4BC9-8B0B-72DB55CDC472}"
 	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
 		shippit.sh = shippit.sh
 	EndProjectSection
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SPLORR.Game", "abettor-of-splorr\src\SPLORR.Game\SPLORR.Game.vbproj", "{B1E55D70-2640-4522-A4B4-C9A07961726B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Submodule", "Submodule", "{D8B23185-56ED-4792-A2CD-8326BFDB290E}"
+EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "S0W80.UI", "abettor-of-splorr\src\S0W80.UI\S0W80.UI.vbproj", "{00FB60E2-880B-48D3-9164-E11517097B26}"
+EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "S0W80.Presentation", "abettor-of-splorr\src\S0W80.Presentation\S0W80.Presentation.vbproj", "{0935CAAD-BBFC-43A0-B1CB-80E65CC328BF}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GwensPeregrination", "GwensPeregrination\GwensPeregrination.vbproj", "{F9FD0FB2-9564-4E06-9E1D-780DAFB68DA2}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GP.Application", "GP.Application\GP.Application.vbproj", "{16E7D163-A85B-4584-9809-DD230031F074}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,12 +37,30 @@ Global
 		{B1E55D70-2640-4522-A4B4-C9A07961726B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1E55D70-2640-4522-A4B4-C9A07961726B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1E55D70-2640-4522-A4B4-C9A07961726B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00FB60E2-880B-48D3-9164-E11517097B26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00FB60E2-880B-48D3-9164-E11517097B26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00FB60E2-880B-48D3-9164-E11517097B26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00FB60E2-880B-48D3-9164-E11517097B26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0935CAAD-BBFC-43A0-B1CB-80E65CC328BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0935CAAD-BBFC-43A0-B1CB-80E65CC328BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0935CAAD-BBFC-43A0-B1CB-80E65CC328BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0935CAAD-BBFC-43A0-B1CB-80E65CC328BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9FD0FB2-9564-4E06-9E1D-780DAFB68DA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9FD0FB2-9564-4E06-9E1D-780DAFB68DA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9FD0FB2-9564-4E06-9E1D-780DAFB68DA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9FD0FB2-9564-4E06-9E1D-780DAFB68DA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16E7D163-A85B-4584-9809-DD230031F074}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16E7D163-A85B-4584-9809-DD230031F074}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16E7D163-A85B-4584-9809-DD230031F074}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16E7D163-A85B-4584-9809-DD230031F074}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B1E55D70-2640-4522-A4B4-C9A07961726B} = {D8B23185-56ED-4792-A2CD-8326BFDB290E}
+		{00FB60E2-880B-48D3-9164-E11517097B26} = {D8B23185-56ED-4792-A2CD-8326BFDB290E}
+		{0935CAAD-BBFC-43A0-B1CB-80E65CC328BF} = {D8B23185-56ED-4792-A2CD-8326BFDB290E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F1ECBB95-3277-4F3B-89B7-17190D47309A}
