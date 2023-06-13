@@ -24,7 +24,7 @@
             ShowError(errorText)
         End If
     End Sub
-    Public MustOverride Sub Start() Implements IApplicationState.Start
+    Public MustOverride Sub Run() Implements IApplicationState.Run
     Protected MustOverride Function HandleChoice(choice As Integer) As Boolean
     Protected Sub ShowError(message As String)
         With _frameBuffer
@@ -33,7 +33,7 @@
             .WriteLine()
             .WriteLine(message)
         End With
-        Start()
+        Run()
     End Sub
     Protected Sub ShowPrompt()
         With _frameBuffer

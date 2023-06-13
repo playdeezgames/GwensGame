@@ -13,7 +13,7 @@ Public Class Engine
         End Get
         Set(value As String)
             _currentApplicationStateIdentifier = value
-            CurrentState.Start()
+            CurrentState.Run()
         End Set
     End Property
 

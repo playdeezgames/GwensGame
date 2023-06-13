@@ -5,7 +5,7 @@
         MyBase.New(stateMachine, frameBuffer)
     End Sub
 
-    Public Overrides Sub Start()
+    Public Overrides Sub Run()
         With _frameBuffer
             .BackgroundColor = Black
             .WriteLine()

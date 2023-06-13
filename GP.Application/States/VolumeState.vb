@@ -11,7 +11,7 @@
         _setVolume = setVolume
         _getVolume = getVolume
     End Sub
-    Public Overrides Sub Start()
+    Public Overrides Sub Run()
         With _frameBuffer
             .BackgroundColor = Black
             .WriteLine()
@@ -31,7 +31,7 @@
                 ChangeToState(Options)
             Case 1 To 11
                 _setVolume((choice - 1) / 10.0F)
-                Start()
+                Run()
             Case Else
                 Return False
         End Select

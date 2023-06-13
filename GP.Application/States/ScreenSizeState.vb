@@ -5,7 +5,7 @@
         MyBase.New(stateMachine, frameBuffer)
         _setScreenSize = setScreenSize
     End Sub
-    Public Overrides Sub Start()
+    Public Overrides Sub Run()
         With _frameBuffer
             .BackgroundColor = Black
             .WriteLine()
@@ -23,7 +23,7 @@
         Select Case choice
             Case 1 To 12
                 _setScreenSize(choice)
-                Start()
+                Run()
             Case 0
                 ChangeToState(Options)
             Case Else

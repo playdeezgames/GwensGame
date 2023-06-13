@@ -6,7 +6,7 @@
         MyBase.New(stateMachine, frameBuffer)
         _toggleFullscreen = toggleFullscreen
     End Sub
-    Public Overrides Sub Start()
+    Public Overrides Sub Run()
         With _frameBuffer
             .BackgroundColor = Black
             .WriteLine()
@@ -26,7 +26,7 @@
                 ChangeToState(ApplicationStates.MainMenu)
             Case 1
                 _toggleFullscreen()
-                Start()
+                Run()
             Case 2
                 ChangeToState(ApplicationStates.ScreenSize)
             Case 3

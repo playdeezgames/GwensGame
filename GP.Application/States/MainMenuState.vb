@@ -18,7 +18,7 @@
         End Select
         Return True
     End Function
-    Public Overrides Sub Start()
+    Public Overrides Sub Run()
         With _frameBuffer
             .BackgroundColor = Black
             .WriteLine()
