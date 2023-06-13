@@ -27,6 +27,8 @@
                 Start()
             Case 2
                 ChangeToState(ApplicationStates.ScreenSize)
+            Case 3
+                ChangeToState(ApplicationStates.Volume)
             Case Else
                 Return False
         End Select

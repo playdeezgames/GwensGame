@@ -11,7 +11,10 @@ Module Program
             config.Scale,
             config.FullScreen,
             config.Volume,
-            New Dictionary(Of String, String))
+            New Dictionary(Of String, String) From
+            {
+                {PlayerHit, "Content/PlayerHit.wav"}
+            })
             host.Run()
         End Using
     End Sub

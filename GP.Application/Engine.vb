@@ -69,9 +69,17 @@ Public Class Engine
         AddState(ConfirmQuit, New ConfirmQuitState(Me, _frameBuffer, AddressOf DoQuit))
         AddState(Options, New OptionsState(Me, _frameBuffer, AddressOf DoToggleFullscreen))
         AddState(ScreenSize, New ScreenSizeState(Me, _frameBuffer, AddressOf DoSetScreenSize))
+        AddState(Volume, New VolumeState(Me, _frameBuffer, AddressOf DoSetVolume, AddressOf DoGetVolume))
         CurrentStateIdentifier = MainMenu
     End Sub
-
+    Private Sub DoSetVolume(volume As Single)
+        _config.Volume = volume
+        DoVolume(_config.Volume)
+        DoSfx(PlayerHit)
+    End Sub
+    Private Function DoGetVolume() As Single
+        Return _config.Volume
+    End Function
     Private Sub DoSetScreenSize(scale As Integer)
         _config.Scale = scale
         DoResize(_config.Scale, _config.FullScreen)

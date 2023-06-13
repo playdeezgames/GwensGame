@@ -17,7 +17,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Content\PlayerHit.wav" />
     <None Remove="Icon.bmp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Content\PlayerHit.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
