@@ -1,11 +1,27 @@
-Imports System.ComponentModel
-
 Public Class Engine
     Inherits BasePresenter
-    Implements IEngine
+    Implements IEngine, IApplicationStateMachine
     Private ReadOnly _config As GPConfig
     Private ReadOnly _frameBuffer As IFrameBuffer
-    Private _lineBuffer As String
+    Private _lineBuffer As String = String.Empty
+    Private ReadOnly _applicationStates As New Dictionary(Of String, IApplicationState)
+    Private _currentApplicationStateIdentifier As String
+    Public Property CurrentStateIdentifier As String Implements IApplicationStateMachine.CurrentStateIdentifier
+        Get
+            Return _currentApplicationStateIdentifier
+        End Get
+        Set(value As String)
+            _currentApplicationStateIdentifier = value
+            CurrentState?.Start()
+        End Set
+    End Property
+
+    Public ReadOnly Property CurrentState As IApplicationState Implements IApplicationStateMachine.CurrentState
+        Get
+            Return GetState(_currentApplicationStateIdentifier)
+        End Get
+    End Property
+
     Sub New(config As GPConfig, frameBuffer As IFrameBuffer)
         _config = config
         _frameBuffer = frameBuffer
@@ -15,10 +31,13 @@ Public Class Engine
             If command.Length = 1 Then
                 Select Case command
                     Case ChrW(8)
-                        _frameBuffer.CursorColumn -= 1
-                        _frameBuffer.Write(" "c)
-                        _frameBuffer.CursorColumn -= 1
-                        _lineBuffer = If(_lineBuffer.Any, _lineBuffer.Substring(0, _lineBuffer.Length - 1), _lineBuffer)
+                        If _lineBuffer.Any Then
+                            'TODO: fix wrapping line
+                            _frameBuffer.CursorColumn -= 1
+                            _frameBuffer.Write(" "c)
+                            _frameBuffer.CursorColumn -= 1
+                            _lineBuffer = If(_lineBuffer.Any, _lineBuffer.Substring(0, _lineBuffer.Length - 1), _lineBuffer)
+                        End If
                     Case ChrW(13)
                         _frameBuffer.WriteLine("")
                         Execute()
@@ -46,9 +65,22 @@ Public Class Engine
         _frameBuffer.WriteLine("                              Gwen's Peregrination")
         _frameBuffer.ForegroundColor = Gray
         _frameBuffer.WriteLine("                        A Production of TheGrumpyGameDev")
+        AddState(MainMenu, New MainMenuState(Me, _frameBuffer))
+        AddState(ConfirmQuit, New ConfirmQuitState(Me, _frameBuffer, AddressOf DoQuit))
+        CurrentStateIdentifier = MainMenu
     End Sub
 
     Private Sub Execute()
-        Throw New NotImplementedException()
+        Dim tokens = _lineBuffer.ToLowerInvariant.Split(" "c)
+        _lineBuffer = String.Empty
+        CurrentState.Handle(tokens)
     End Sub
+
+    Public Sub AddState(identifier As String, state As IApplicationState) Implements IApplicationStateMachine.AddState
+        _applicationStates(identifier) = state
+    End Sub
+
+    Public Function GetState(identifier As String) As IApplicationState Implements IApplicationStateMachine.GetState
+        Return If(_applicationStates.ContainsKey(identifier), _applicationStates(identifier), Nothing)
+    End Function
 End Class
