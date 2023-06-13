@@ -12,7 +12,7 @@ Public Class Engine
         End Get
         Set(value As String)
             _currentApplicationStateIdentifier = value
-            CurrentState?.Start()
+            CurrentState.Start()
         End Set
     End Property
 
@@ -67,7 +67,19 @@ Public Class Engine
         _frameBuffer.WriteLine("                        A Production of TheGrumpyGameDev")
         AddState(MainMenu, New MainMenuState(Me, _frameBuffer))
         AddState(ConfirmQuit, New ConfirmQuitState(Me, _frameBuffer, AddressOf DoQuit))
+        AddState(Options, New OptionsState(Me, _frameBuffer, AddressOf DoToggleFullscreen))
+        AddState(ScreenSize, New ScreenSizeState(Me, _frameBuffer, AddressOf DoSetScreenSize))
         CurrentStateIdentifier = MainMenu
+    End Sub
+
+    Private Sub DoSetScreenSize(scale As Integer)
+        _config.Scale = scale
+        DoResize(_config.Scale, _config.FullScreen)
+    End Sub
+
+    Private Sub DoToggleFullscreen()
+        _config.FullScreen = Not _config.FullScreen
+        DoResize(_config.Scale, _config.FullScreen)
     End Sub
 
     Private Sub Execute()
