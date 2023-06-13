@@ -76,6 +76,7 @@ Public Class Engine
         _config.Volume = volume
         DoVolume(_config.Volume)
         DoSfx(PlayerHit)
+        _config.Save()
     End Sub
     Private Function DoGetVolume() As Single
         Return _config.Volume
@@ -83,11 +84,13 @@ Public Class Engine
     Private Sub DoSetScreenSize(scale As Integer)
         _config.Scale = scale
         DoResize(_config.Scale, _config.FullScreen)
+        _config.Save()
     End Sub
 
     Private Sub DoToggleFullscreen()
         _config.FullScreen = Not _config.FullScreen
         DoResize(_config.Scale, _config.FullScreen)
+        _config.Save()
     End Sub
 
     Private Sub Execute()
