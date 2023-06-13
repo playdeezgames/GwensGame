@@ -7,10 +7,11 @@
         _toggleFullscreen = toggleFullscreen
     End Sub
     Public Overrides Sub Start()
-        _frameBuffer.ForegroundColor = Gray
         _frameBuffer.BackgroundColor = Black
         _frameBuffer.WriteLine()
+        _frameBuffer.ForegroundColor = Brown
         _frameBuffer.WriteLine("Options:")
+        _frameBuffer.ForegroundColor = Gray
         _frameBuffer.WriteLine("1. Toggle Fullscreen")
         _frameBuffer.WriteLine("2. Set Display Size...")
         _frameBuffer.WriteLine("3. Set Volume...")

@@ -7,10 +7,11 @@
     End Sub
     Public Overrides Sub Start()
         With _frameBuffer
-            .ForegroundColor = Gray
             .BackgroundColor = Black
             .WriteLine()
+            .ForegroundColor = Brown
             .WriteLine("Display Size:")
+            .ForegroundColor = Gray
             For scale = 1 To 12
                 .WriteLine($"{scale}. {scale * ScreenWidth}x{scale * ScreenHeight}(x{scale})")
             Next

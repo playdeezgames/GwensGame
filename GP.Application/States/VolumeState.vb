@@ -13,10 +13,11 @@
     End Sub
     Public Overrides Sub Start()
         With _frameBuffer
-            .ForegroundColor = Gray
             .BackgroundColor = Black
             .WriteLine()
+            .ForegroundColor = Brown
             .WriteLine($"Volume(currently {_getVolume() * 100.0F:f0}%):")
+            .ForegroundColor = Gray
             For n = 0 To 10
                 .WriteLine($"{n + 1}. {n * 10}%")
             Next

@@ -19,7 +19,7 @@
     Public Overrides Sub Start()
         _frameBuffer.BackgroundColor = Black
         _frameBuffer.WriteLine()
-        _frameBuffer.ForegroundColor = Red
+        _frameBuffer.ForegroundColor = LightRed
         _frameBuffer.WriteLine("Are you sure you want to quit?")
         _frameBuffer.ForegroundColor = Gray
         _frameBuffer.WriteLine("1. Yes")

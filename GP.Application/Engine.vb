@@ -81,7 +81,7 @@ Public Class Engine
             .WriteLine("                             |___/")
             .ForegroundColor = White
             .WriteLine("                              Gwen's Peregrination")
-            .ForegroundColor = Gray
+            .ForegroundColor = DarkGray
             .WriteLine("                        A Production of TheGrumpyGameDev")
         End With
     End Sub
