@@ -19,16 +19,17 @@
         Return True
     End Function
     Public Overrides Sub Start()
-        _frameBuffer.BackgroundColor = Black
-        _frameBuffer.WriteLine()
-        _frameBuffer.ForegroundColor = Brown
-        _frameBuffer.WriteLine("Main Menu:")
-        _frameBuffer.ForegroundColor = Gray
-        _frameBuffer.WriteLine("1. Embark!")
-        _frameBuffer.WriteLine("2. Load...")
-        _frameBuffer.WriteLine("3. Options...")
-        _frameBuffer.WriteLine("0. Quit")
-        _frameBuffer.WriteLine()
-        _frameBuffer.Write("> ")
+        With _frameBuffer
+            .BackgroundColor = Black
+            .WriteLine()
+            .ForegroundColor = Brown
+            .WriteLine("Main Menu:")
+            .ForegroundColor = Gray
+            .WriteLine("1. Embark!")
+            .WriteLine("2. Load...")
+            .WriteLine("3. Options...")
+            .WriteLine("0. Quit")
+        End With
+        ShowPrompt()
     End Sub
 End Class

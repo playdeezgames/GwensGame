@@ -17,7 +17,7 @@
             Next
             .WriteLine("0. Go Back")
         End With
-
+        ShowPrompt()
     End Sub
     Protected Overrides Function HandleChoice(choice As Integer) As Boolean
         Select Case choice

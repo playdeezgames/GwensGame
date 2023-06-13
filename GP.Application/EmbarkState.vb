@@ -7,12 +7,14 @@
 
     Public Overrides Sub Start()
         With _frameBuffer
-            .ForegroundColor = Gray
             .BackgroundColor = Black
             .WriteLine()
+            .ForegroundColor = Brown
             .WriteLine("Yer so embarked!")
+            .ForegroundColor = Gray
             .WriteLine("0. I know, right?")
         End With
+        ShowPrompt()
     End Sub
 
     Protected Overrides Function HandleChoice(choice As Integer) As Boolean

@@ -27,10 +27,19 @@
     Public MustOverride Sub Start() Implements IApplicationState.Start
     Protected MustOverride Function HandleChoice(choice As Integer) As Boolean
     Protected Sub ShowError(message As String)
-        _frameBuffer.ForegroundColor = Red
-        _frameBuffer.BackgroundColor = Black
-        _frameBuffer.WriteLine()
-        _frameBuffer.WriteLine(message)
+        With _frameBuffer
+            .ForegroundColor = Red
+            .BackgroundColor = Black
+            .WriteLine()
+            .WriteLine(message)
+        End With
         Start()
+    End Sub
+    Protected Sub ShowPrompt()
+        With _frameBuffer
+            .WriteLine()
+            .ForegroundColor = Cyan
+            .Write("> ")
+        End With
     End Sub
 End Class

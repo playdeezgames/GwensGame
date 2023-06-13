@@ -7,17 +7,18 @@
         _toggleFullscreen = toggleFullscreen
     End Sub
     Public Overrides Sub Start()
-        _frameBuffer.BackgroundColor = Black
-        _frameBuffer.WriteLine()
-        _frameBuffer.ForegroundColor = Brown
-        _frameBuffer.WriteLine("Options:")
-        _frameBuffer.ForegroundColor = Gray
-        _frameBuffer.WriteLine("1. Toggle Fullscreen")
-        _frameBuffer.WriteLine("2. Set Display Size...")
-        _frameBuffer.WriteLine("3. Set Volume...")
-        _frameBuffer.WriteLine("0. Go Back")
-        _frameBuffer.WriteLine()
-        _frameBuffer.Write("> ")
+        With _frameBuffer
+            .BackgroundColor = Black
+            .WriteLine()
+            .ForegroundColor = Brown
+            .WriteLine("Options:")
+            .ForegroundColor = Gray
+            .WriteLine("1. Toggle Fullscreen")
+            .WriteLine("2. Set Display Size...")
+            .WriteLine("3. Set Volume...")
+            .WriteLine("0. Go Back")
+        End With
+        ShowPrompt()
     End Sub
     Protected Overrides Function HandleChoice(choice As Integer) As Boolean
         Select Case choice

@@ -22,9 +22,8 @@
                 .WriteLine($"{n + 1}. {n * 10}%")
             Next
             .WriteLine("0. Go Back")
-            .WriteLine()
-            .Write("> ")
         End With
+        ShowPrompt()
     End Sub
     Protected Overrides Function HandleChoice(choice As Integer) As Boolean
         Select Case choice
