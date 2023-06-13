@@ -7,10 +7,11 @@
 
     Public Overrides Sub Start()
         With _frameBuffer
-            .ForegroundColor = Gray
             .BackgroundColor = Black
             .WriteLine()
+            .ForegroundColor = Brown
             .WriteLine("Load From:")
+            .ForegroundColor = Gray
             .WriteLine("0. Never Mind")
         End With
     End Sub
