@@ -5,26 +5,18 @@
         MyBase.New(stateMachine, frameBuffer)
         _quitAction = quitAction
     End Sub
-    Public Overrides Sub Handle(tokens As IEnumerable(Of String))
-        Const errorText = "Please enter a valid number!"
-        If tokens.Count > 1 Then
-            Me.ShowError(errorText)
-            Return
-        End If
-        Dim choice As Integer
-        If Not Int32.TryParse(tokens.First, choice) Then
-            Me.ShowError(errorText)
-            Return
-        End If
+    Protected Overrides Function HandleChoice(choice As Integer) As Boolean
         Select Case choice
             Case 0
                 _stateMachine.CurrentStateIdentifier = ApplicationStates.MainMenu
+                Return True
             Case 1
                 _quitAction()
+                Return True
             Case Else
-                Me.ShowError(errorText)
+                Return False
         End Select
-    End Sub
+    End Function
     Public Overrides Sub Start()
         _frameBuffer.BackgroundColor = Black
         _frameBuffer.WriteLine()
