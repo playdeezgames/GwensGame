@@ -6,6 +6,7 @@ Public Class Engine
     Private _lineBuffer As String = String.Empty
     Private ReadOnly _applicationStates As New Dictionary(Of String, IApplicationState)
     Private _currentApplicationStateIdentifier As String
+    Friend Shared Property World As IWorld
     Public Property CurrentStateIdentifier As String Implements IApplicationStateMachine.CurrentStateIdentifier
         Get
             Return _currentApplicationStateIdentifier
@@ -51,27 +52,40 @@ Public Class Engine
     End Sub
 
     Public Sub Initialize() Implements IEngine.Initialize
-        _frameBuffer.Clear()
-        _frameBuffer.ForegroundColor = LightRed
-        _frameBuffer.WriteLine("                          ___                 _")
-        _frameBuffer.WriteLine("                         / __|_ __ _____ _ _ ( )___")
-        _frameBuffer.WriteLine("                        | (_ \ V  V / -_) ' \|/(_-<")
-        _frameBuffer.WriteLine("              ___        \___|\_/\_/\___|_||_| /__/_   _")
-        _frameBuffer.WriteLine("             | _ \___ _ _ ___ __ _ _ _(_)_ _  __ _| |_(_)___ _ _")
-        _frameBuffer.WriteLine("             |  _/ -_) '_/ -_) _` | '_| | ' \/ _` |  _| / _ \ ' \")
-        _frameBuffer.WriteLine("             |_| \___|_| \___\__, |_| |_|_||_\__,_|\__|_\___/_||_|")
-        _frameBuffer.WriteLine("                             |___/")
-        _frameBuffer.ForegroundColor = White
-        _frameBuffer.WriteLine("                              Gwen's Peregrination")
-        _frameBuffer.ForegroundColor = Gray
-        _frameBuffer.WriteLine("                        A Production of TheGrumpyGameDev")
+        SplashScreen()
+        WireUpStates()
+        CurrentStateIdentifier = MainMenu
+    End Sub
+
+    Private Sub WireUpStates()
         AddState(MainMenu, New MainMenuState(Me, _frameBuffer))
         AddState(ConfirmQuit, New ConfirmQuitState(Me, _frameBuffer, AddressOf DoQuit))
         AddState(Options, New OptionsState(Me, _frameBuffer, AddressOf DoToggleFullscreen))
         AddState(ScreenSize, New ScreenSizeState(Me, _frameBuffer, AddressOf DoSetScreenSize))
         AddState(Volume, New VolumeState(Me, _frameBuffer, AddressOf DoSetVolume, AddressOf DoGetVolume))
-        CurrentStateIdentifier = MainMenu
+        AddState(Embark, New EmbarkState(Me, _frameBuffer))
+        AddState(Load, New LoadState(Me, _frameBuffer))
     End Sub
+
+    Private Sub SplashScreen()
+        With _frameBuffer
+            .Clear()
+            .ForegroundColor = LightRed
+            .WriteLine("                          ___                 _")
+            .WriteLine("                         / __|_ __ _____ _ _ ( )___")
+            .WriteLine("                        | (_ \ V  V / -_) ' \|/(_-<")
+            .WriteLine("              ___        \___|\_/\_/\___|_||_| /__/_   _")
+            .WriteLine("             | _ \___ _ _ ___ __ _ _ _(_)_ _  __ _| |_(_)___ _ _")
+            .WriteLine("             |  _/ -_) '_/ -_) _` | '_| | ' \/ _` |  _| / _ \ ' \")
+            .WriteLine("             |_| \___|_| \___\__, |_| |_|_||_\__,_|\__|_\___/_||_|")
+            .WriteLine("                             |___/")
+            .ForegroundColor = White
+            .WriteLine("                              Gwen's Peregrination")
+            .ForegroundColor = Gray
+            .WriteLine("                        A Production of TheGrumpyGameDev")
+        End With
+    End Sub
+
     Private Sub DoSetVolume(volume As Single)
         _config.Volume = volume
         DoVolume(_config.Volume)

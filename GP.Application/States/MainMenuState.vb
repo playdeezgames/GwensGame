@@ -6,9 +6,13 @@
     Protected Overrides Function HandleChoice(choice As Integer) As Boolean
         Select Case choice
             Case 0
-                _stateMachine.CurrentStateIdentifier = ApplicationStates.ConfirmQuit
+                ChangeToState(ApplicationStates.ConfirmQuit)
+            Case 1
+                ChangeToState(ApplicationStates.Embark)
+            Case 2
+                ChangeToState(ApplicationStates.Load)
             Case 3
-                _stateMachine.CurrentStateIdentifier = ApplicationStates.Options
+                ChangeToState(ApplicationStates.Options)
             Case Else
                 Return False
         End Select
