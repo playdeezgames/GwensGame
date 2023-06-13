@@ -18,8 +18,11 @@
             Case 0
                 _stateMachine.CurrentStateIdentifier = ApplicationStates.ConfirmQuit
             Case 1
+                Me.ShowError(errorText)
             Case 2
+                Me.ShowError(errorText)
             Case 3
+                Me.ShowError(errorText)
             Case Else
                 Me.ShowError(errorText)
         End Select
