@@ -7,10 +7,12 @@
         Select Case choice
             Case 0
                 _stateMachine.CurrentStateIdentifier = ApplicationStates.ConfirmQuit
-                Return True
+            Case 3
+                _stateMachine.CurrentStateIdentifier = ApplicationStates.Options
             Case Else
                 Return False
         End Select
+        Return True
     End Function
     Public Overrides Sub Start()
         _frameBuffer.ForegroundColor = Gray

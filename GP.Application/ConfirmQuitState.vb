@@ -9,13 +9,12 @@
         Select Case choice
             Case 0
                 _stateMachine.CurrentStateIdentifier = ApplicationStates.MainMenu
-                Return True
             Case 1
                 _quitAction()
-                Return True
             Case Else
                 Return False
         End Select
+        Return True
     End Function
     Public Overrides Sub Start()
         _frameBuffer.BackgroundColor = Black
