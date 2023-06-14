@@ -20,8 +20,13 @@
         Select Case choice
             Case 0
                 ChangeToState(ApplicationStates.Neutral)
+            Case 1
+                ChangeToState(ApplicationStates.Save)
             Case 2
                 ChangeToState(ApplicationStates.ConfirmAbandon)
+            Case 3
+                OptionsState.ExitState = GameMenu
+                ChangeToState(ApplicationStates.Options)
             Case Else
                 Return False
         End Select

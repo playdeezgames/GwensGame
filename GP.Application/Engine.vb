@@ -68,6 +68,7 @@ Public Class Engine
         AddState(Neutral, New NeutralState(Me, _frameBuffer))
         AddState(GameMenu, New GameMenuState(Me, _frameBuffer))
         AddState(ConfirmAbandon, New ConfirmAbandonState(Me, _frameBuffer))
+        AddState(Save, New SaveState(Me, _frameBuffer))
     End Sub
 
     Private Sub SplashScreen()

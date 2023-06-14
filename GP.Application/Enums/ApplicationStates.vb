@@ -7,6 +7,7 @@
     Friend Const MainMenu = "MainMenu"
     Friend Const Neutral = "Neutral"
     Friend Const Options = "Options"
+    Friend Const Save = "Save"
     Friend Const ScreenSize = "ScreenSize"
     Friend Const Volume = "Volume"
 End Module
