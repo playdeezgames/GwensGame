@@ -24,14 +24,14 @@
     Protected Overrides Function HandleChoice(choice As Integer) As Boolean
         Select Case choice
             Case 0
-                ChangeToState(ExitState)
+                GoToState(ExitState)
             Case 1
                 _toggleFullscreen()
                 Run()
             Case 2
-                ChangeToState(ApplicationStates.ScreenSize)
+                GoToState(GameStates.ScreenSize)
             Case 3
-                ChangeToState(ApplicationStates.Volume)
+                GoToState(GameStates.Volume)
             Case Else
                 Return False
         End Select

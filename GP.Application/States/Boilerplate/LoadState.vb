@@ -24,7 +24,7 @@
     Protected Overrides Function HandleChoice(choice As Integer) As Boolean
         Select Case choice
             Case 0
-                ChangeToState(MainMenu)
+                GoToState(MainMenu)
             Case 1 To 5
                 Dim filename = SaveSlots(choice - 1).Item2
                 If Not File.Exists(filename) Then
@@ -37,7 +37,7 @@
                     If Engine.World IsNot Nothing Then
                         .ForegroundColor = LightGreen
                         .WriteLine($"Loaded game from {SaveSlots(choice - 1).Item1}!")
-                        ChangeToState(Neutral)
+                        GoToState(Neutral)
                     Else
                         .ForegroundColor = Red
                         .WriteLine($"Failed to load game from {SaveSlots(choice - 1).Item1}!")

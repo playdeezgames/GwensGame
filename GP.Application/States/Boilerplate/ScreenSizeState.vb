@@ -25,7 +25,7 @@
                 _setScreenSize(choice)
                 Run()
             Case 0
-                ChangeToState(Options)
+                GoToState(Options)
             Case Else
                 Return False
         End Select

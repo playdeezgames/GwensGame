@@ -2,7 +2,7 @@
     Implements IApplicationState
     Protected ReadOnly _stateMachine As IApplicationStateMachine
     Protected ReadOnly _frameBuffer As IFrameBuffer
-    Protected Sub ChangeToState(state As String)
+    Protected Sub GoToState(state As String)
         _stateMachine.CurrentStateIdentifier = state
     End Sub
     Sub New(stateMachine As IApplicationStateMachine, frameBuffer As IFrameBuffer)

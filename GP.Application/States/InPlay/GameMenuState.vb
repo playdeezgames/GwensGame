@@ -19,14 +19,14 @@
     Protected Overrides Function HandleChoice(choice As Integer) As Boolean
         Select Case choice
             Case 0
-                ChangeToState(ApplicationStates.Neutral)
+                GoToState(GameStates.Neutral)
             Case 1
-                ChangeToState(ApplicationStates.Save)
+                GoToState(GameStates.Save)
             Case 2
-                ChangeToState(ApplicationStates.ConfirmAbandon)
+                GoToState(GameStates.ConfirmAbandon)
             Case 3
                 OptionsState.ExitState = GameMenu
-                ChangeToState(ApplicationStates.Options)
+                GoToState(GameStates.Options)
             Case Else
                 Return False
         End Select

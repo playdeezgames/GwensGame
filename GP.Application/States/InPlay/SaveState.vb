@@ -28,7 +28,7 @@
     Protected Overrides Function HandleChoice(choice As Integer) As Boolean
         Select Case choice
             Case 0
-                ChangeToState(GameMenu)
+                GoToState(GameMenu)
             Case 1 To 5
                 Engine.World.Save(SaveSlots(choice - 1).Item2)
                 With _frameBuffer
@@ -37,7 +37,7 @@
                     .ForegroundColor = LightGreen
                     .WriteLine($"Game Saved to {SaveSlots(choice - 1).Item1}!")
                 End With
-                ChangeToState(GameMenu)
+                GoToState(GameMenu)
             Case Else
                 Return False
         End Select

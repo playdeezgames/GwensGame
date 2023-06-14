@@ -28,7 +28,7 @@
     Protected Overrides Function HandleChoice(choice As Integer) As Boolean
         Select Case choice
             Case 0
-                ChangeToState(Options)
+                GoToState(Options)
             Case 1 To 11
                 _setVolume((choice - 1) / 10.0F)
                 Run()

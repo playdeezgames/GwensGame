@@ -8,7 +8,7 @@
     Protected Overrides Function HandleChoice(choice As Integer) As Boolean
         Select Case choice
             Case 0
-                ChangeToState(ApplicationStates.MainMenu)
+                GoToState(GameStates.MainMenu)
             Case 1
                 _quitAction()
             Case Else

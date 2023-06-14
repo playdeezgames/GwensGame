@@ -18,10 +18,10 @@
     Protected Overrides Function HandleChoice(choice As Integer) As Boolean
         Select Case choice
             Case 0
-                ChangeToState(GameMenu)
+                GoToState(GameMenu)
             Case 1
                 Engine.World = Nothing
-                ChangeToState(MainMenu)
+                GoToState(MainMenu)
             Case Else
                 Return False
         End Select

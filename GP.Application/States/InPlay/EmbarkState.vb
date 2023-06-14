@@ -19,7 +19,7 @@
         End With
         Engine.World = World.Create()
         WorldInitializer.Initialize(Engine.World)
-        ChangeToState(ApplicationStates.Neutral)
+        GoToState(GameStates.Neutral)
     End Sub
 
     Protected Overrides Function HandleChoice(choice As Integer) As Boolean

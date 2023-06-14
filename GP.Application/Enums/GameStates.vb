@@ -1,8 +1,9 @@
-﻿Friend Module ApplicationStates
+﻿Friend Module GameStates
     Friend Const ConfirmAbandon = "ConfirmAbandon"
     Friend Const ConfirmQuit = "ConfirmQuit"
     Friend Const Embark = "Embark"
     Friend Const GameMenu = "GameMenu"
+    Friend Const KeepGoing = "KeepGoing"
     Friend Const Load = "Load"
     Friend Const MainMenu = "MainMenu"
     Friend Const Neutral = "Neutral"
