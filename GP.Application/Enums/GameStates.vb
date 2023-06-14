@@ -11,4 +11,5 @@
     Friend Const Save = "Save"
     Friend Const ScreenSize = "ScreenSize"
     Friend Const Volume = "Volume"
+    Friend Const Win = "Win"
 End Module

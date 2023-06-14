@@ -70,6 +70,7 @@ Public Class Engine
         AddState(ConfirmAbandon, New ConfirmAbandonState(Me, _frameBuffer))
         AddState(Save, New SaveState(Me, _frameBuffer))
         AddState(KeepGoing, New KeepGoingState(Me, _frameBuffer))
+        AddState(Win, New WinState(Me, _frameBuffer))
     End Sub
 
     Private Sub SplashScreen()

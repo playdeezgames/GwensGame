@@ -5,6 +5,10 @@
     End Sub
     Public Overrides Sub Run()
         Dim avatar = Engine.World.Avatar
+        If avatar.DistanceRemaining = 0 Then
+            GoToState(GameStates.Win)
+            Return
+        End If
         With _frameBuffer
             .BackgroundColor = Black
             .WriteLine()

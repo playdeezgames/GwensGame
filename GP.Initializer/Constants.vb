@@ -1,3 +1,3 @@
 ﻿Friend Module Constants
-    Friend Const InitialDistanceRemaining = 10
+    Friend Const InitialDistanceRemaining = 2000
 End Module
