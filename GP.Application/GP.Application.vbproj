@@ -4,7 +4,7 @@
     <RootNamespace>GP.Application</RootNamespace>
     <TargetFramework>netstandard2.1</TargetFramework>
     <OptionStrict>On</OptionStrict>
-    <ImportedNamespaces>GP.Business=False,S0W80.UI=False,System.IO=False,System.Text.Json=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,GP.Application=True</ImportedNamespaces>
+    <ImportedNamespaces>GP.Business=False,GP.Initializer=False,S0W80.UI=False,System.IO=False,System.Text.Json=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,GP.Application=True</ImportedNamespaces>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -18,10 +18,12 @@
   <ItemGroup>
     <ProjectReference Include="..\abettor-of-splorr\src\S0W80.UI\S0W80.UI.vbproj" />
     <ProjectReference Include="..\GP.Business\GP.Business.vbproj" />
+    <ProjectReference Include="..\GP.Initializer\GP.Initializer.vbproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Import Include="GP.Business" />
+    <Import Include="GP.Initializer" />
     <Import Include="S0W80.UI" />
     <Import Include="System.IO" />
     <Import Include="System.Text.Json" />

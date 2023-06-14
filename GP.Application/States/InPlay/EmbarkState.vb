@@ -7,6 +7,7 @@
 
     Public Overrides Sub Run()
         Engine.World = World.Create()
+        WorldInitializer.Initialize(Engine.World)
         ChangeToState(ApplicationStates.Neutral)
     End Sub
 
