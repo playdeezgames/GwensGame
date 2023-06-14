@@ -1,5 +1,6 @@
 Public Module WorldInitializer
     Public Sub Initialize(world As IWorld)
-        'TODO: initialize world
+        Dim gwen = world.CreateCharacter()
+        world.Avatar = gwen
     End Sub
 End Module

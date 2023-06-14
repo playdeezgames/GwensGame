@@ -6,6 +6,16 @@ Public Class World
     Friend Sub New(data As WorldData)
         MyBase.New(data)
     End Sub
+
+    Public Property Avatar As ICharacter Implements IWorld.Avatar
+        Get
+            Return If(WorldData.AvatarCharacterId.HasValue, New Character(WorldData, WorldData.AvatarCharacterId.Value), Nothing)
+        End Get
+        Set(value As ICharacter)
+            WorldData.AvatarCharacterId = value?.Id
+        End Set
+    End Property
+
     Public Sub Save(filename As String) Implements IWorld.Save
         File.WriteAllText(filename, JsonSerializer.Serialize(WorldData))
     End Sub
@@ -18,5 +28,11 @@ Public Class World
         Catch ex As Exception
             Return Nothing
         End Try
+    End Function
+
+    Public Function CreateCharacter() As ICharacter Implements IWorld.CreateCharacter
+        Dim characterId = WorldData.Characters.Count
+        WorldData.Characters.Add(New CharacterData)
+        Return New Character(WorldData, characterId)
     End Function
 End Class
