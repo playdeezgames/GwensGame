@@ -745,7 +745,7 @@
           }
         }
       },
-      "System.Text.Json/7.0.2": {
+      "System.Text.Json/7.0.3": {
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "6.0.0",
           "System.Text.Encodings.Web": "7.0.0"
@@ -753,17 +753,42 @@
         "runtime": {
           "lib/net6.0/System.Text.Json.dll": {
             "assemblyVersion": "7.0.0.0",
-            "fileVersion": "7.0.323.6910"
+            "fileVersion": "7.0.723.27404"
           }
         }
       },
       "GP.Application/1.0.0": {
         "dependencies": {
+          "GP.Business": "1.0.0",
+          "GP.Initializer": "1.0.0",
           "S0W80.UI": "1.0.0",
-          "System.Text.Json": "7.0.2"
+          "System.Text.Json": "7.0.3"
         },
         "runtime": {
           "GP.Application.dll": {}
+        }
+      },
+      "GP.Business/1.0.0": {
+        "dependencies": {
+          "GP.Data": "1.0.0",
+          "SPLORR.Game": "1.0.0",
+          "System.Text.Json": "7.0.3"
+        },
+        "runtime": {
+          "GP.Business.dll": {}
+        }
+      },
+      "GP.Data/1.0.0": {
+        "runtime": {
+          "GP.Data.dll": {}
+        }
+      },
+      "GP.Initializer/1.0.0": {
+        "dependencies": {
+          "GP.Business": "1.0.0"
+        },
+        "runtime": {
+          "GP.Initializer.dll": {}
         }
       },
       "S0W80.Presentation/1.0.0": {
@@ -778,6 +803,11 @@
       "S0W80.UI/1.0.0": {
         "runtime": {
           "S0W80.UI.dll": {}
+        }
+      },
+      "SPLORR.Game/1.0.0": {
+        "runtime": {
+          "SPLORR.Game.dll": {}
         }
       }
     }
@@ -814,14 +844,29 @@
       "path": "system.text.encodings.web/7.0.0",
       "hashPath": "system.text.encodings.web.7.0.0.nupkg.sha512"
     },
-    "System.Text.Json/7.0.2": {
+    "System.Text.Json/7.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-/LZf/JrGyilojqwpaywb+sSz8Tew7ij4K/Sk+UW8AKfAK7KRhR6mKpKtTm06cYA7bCpGTWfYksIW+mVsdxPegQ==",
-      "path": "system.text.json/7.0.2",
-      "hashPath": "system.text.json.7.0.2.nupkg.sha512"
+      "sha512": "sha512-AyjhwXN1zTFeIibHimfJn6eAsZ7rTBib79JQpzg8WAuR/HKDu9JGNHTuu3nbbXQ/bgI+U4z6HtZmCHNXB1QXrQ==",
+      "path": "system.text.json/7.0.3",
+      "hashPath": "system.text.json.7.0.3.nupkg.sha512"
     },
     "GP.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GP.Business/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GP.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GP.Initializer/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -832,6 +877,11 @@
       "sha512": ""
     },
     "S0W80.UI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SPLORR.Game/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
