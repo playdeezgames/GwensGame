@@ -12,6 +12,7 @@
             Case 2
                 ChangeToState(ApplicationStates.Load)
             Case 3
+                OptionsState.ExitState = ApplicationStates.MainMenu
                 ChangeToState(ApplicationStates.Options)
             Case Else
                 Return False

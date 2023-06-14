@@ -8,7 +8,7 @@
     Protected Overrides Function HandleChoice(choice As Integer) As Boolean
         Select Case choice
             Case 0
-                _stateMachine.CurrentStateIdentifier = ApplicationStates.MainMenu
+                ChangeToState(ApplicationStates.MainMenu)
             Case 1
                 _quitAction()
             Case Else

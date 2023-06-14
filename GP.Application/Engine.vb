@@ -65,6 +65,9 @@ Public Class Engine
         AddState(Volume, New VolumeState(Me, _frameBuffer, AddressOf DoSetVolume, AddressOf DoGetVolume))
         AddState(Embark, New EmbarkState(Me, _frameBuffer))
         AddState(Load, New LoadState(Me, _frameBuffer))
+        AddState(Neutral, New NeutralState(Me, _frameBuffer))
+        AddState(GameMenu, New GameMenuState(Me, _frameBuffer))
+        AddState(ConfirmAbandon, New ConfirmAbandonState(Me, _frameBuffer))
     End Sub
 
     Private Sub SplashScreen()

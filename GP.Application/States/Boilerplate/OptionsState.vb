@@ -6,6 +6,7 @@
         MyBase.New(stateMachine, frameBuffer)
         _toggleFullscreen = toggleFullscreen
     End Sub
+    Friend Shared Property ExitState As String
     Public Overrides Sub Run()
         With _frameBuffer
             .BackgroundColor = Black
@@ -23,7 +24,7 @@
     Protected Overrides Function HandleChoice(choice As Integer) As Boolean
         Select Case choice
             Case 0
-                ChangeToState(ApplicationStates.MainMenu)
+                ChangeToState(ExitState)
             Case 1
                 _toggleFullscreen()
                 Run()
