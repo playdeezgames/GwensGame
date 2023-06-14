@@ -16,7 +16,8 @@
             .WriteLine("Current Status:")
             .ForegroundColor = Gray
             .WriteLine($"You have {avatar.DistanceRemaining} miles left to go!")
-            .ForegroundColor = Gray
+            .WriteLine($"Yer health: {avatar.Health}/{avatar.MaximumHealth}")
+            .WriteLine($"Yer satiety: {avatar.Satiety}/{avatar.MaximumSatiety}")
             .WriteLine("1. Keep Going!")
             .WriteLine("0. Game Menu")
         End With
