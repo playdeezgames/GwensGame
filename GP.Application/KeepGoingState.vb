@@ -11,7 +11,7 @@
             .WriteLine("You keep going!")
         End With
         Dim avatar = Engine.World.Avatar
-        avatar.SetDistanceRemaining(avatar.DistanceRemaining - 1)
+        avatar.KeepGoing(1)
         GoToState(Neutral)
     End Sub
     Protected Overrides Function HandleChoice(choice As Integer) As Boolean
