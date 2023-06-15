@@ -10,6 +10,7 @@
             Return
         End If
         If avatar.IsDead Then
+            Engine.PlaySfx(Sfx.PlayerDead)
             GoToState(GameStates.Dead)
             Return
         End If

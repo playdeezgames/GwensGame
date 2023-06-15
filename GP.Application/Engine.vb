@@ -128,4 +128,9 @@ Public Class Engine
     Public Function GetState(identifier As String) As IApplicationState Implements IApplicationStateMachine.GetState
         Return If(_applicationStates.ContainsKey(identifier), _applicationStates(identifier), Nothing)
     End Function
+
+    Public Shared Sub PlaySfx(sfx As String)
+        RaiseEvent OnPlaySfx(sfx)
+    End Sub
+    Public Shared Event OnPlaySfx(sfx As String)
 End Class

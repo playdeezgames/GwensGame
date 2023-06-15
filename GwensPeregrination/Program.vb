@@ -13,8 +13,10 @@ Module Program
             config.Volume,
             New Dictionary(Of String, String) From
             {
-                {PlayerHit, "Content/PlayerHit.wav"}
+                {PlayerHit, "Content/PlayerHit.wav"},
+                {PlayerDead, "Content/PlayerDead.wav"}
             })
+            AddHandler Engine.OnPlaySfx, AddressOf host.HandleSfx
             host.Run()
         End Using
     End Sub
