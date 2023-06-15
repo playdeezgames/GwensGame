@@ -16,13 +16,36 @@
             .WriteLine("Current Status:")
             .ForegroundColor = Gray
             .WriteLine($"You have {avatar.DistanceRemaining} miles left to go!")
-            .WriteLine($"Yer health: {avatar.Health}/{avatar.MaximumHealth}")
-            .WriteLine($"Yer satiety: {avatar.Satiety}/{avatar.MaximumSatiety}")
+
+            .Write($"Yer health: ")
+            .ForegroundColor = GetStatisticColor(avatar.Health, avatar.MaximumHealth)
+            .WriteLine($"{avatar.Health}/{avatar.MaximumHealth}")
+
+            .ForegroundColor = Gray
+            .Write($"Yer satiety: ")
+            .ForegroundColor = GetStatisticColor(avatar.Satiety, avatar.MaximumSatiety)
+            .WriteLine($"{avatar.Satiety}/{avatar.MaximumSatiety}")
+
+            .ForegroundColor = Gray
             .WriteLine("1. Keep Going!")
             .WriteLine("0. Game Menu")
         End With
         ShowPrompt()
     End Sub
+
+    Private Function GetStatisticColor(value As Integer, maximum As Integer) As Integer
+        Select Case CInt(Math.Ceiling((value / maximum) * 4.0))
+            Case Is >= 4
+                Return Green
+            Case 3
+                Return Yellow
+            Case 2
+                Return Brown
+            Case Else
+                Return Red
+        End Select
+    End Function
+
     Protected Overrides Function HandleChoice(choice As Integer) As Boolean
         Select Case choice
             Case 0
