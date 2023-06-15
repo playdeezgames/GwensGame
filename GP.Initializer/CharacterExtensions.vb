@@ -52,4 +52,12 @@ Public Module CharacterExtensions
     Public Function HasWon(character As ICharacter) As Boolean
         Return character.DistanceRemaining = 0
     End Function
+    <Extension>
+    Public Function Pace(character As ICharacter) As Integer
+        Return character.GetStatistic(StatisticTypes.Pace)
+    End Function
+    <Extension>
+    Public Sub SetPace(character As ICharacter, value As Integer)
+        character.SetStatistic(StatisticTypes.Pace, Math.Clamp(value, MinimumPace, MaximumPace))
+    End Sub
 End Module

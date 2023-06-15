@@ -31,11 +31,18 @@
             .WriteLine($"{avatar.Satiety}/{avatar.MaximumSatiety}")
 
             .ForegroundColor = Gray
+            .Write($"Yer pace: ")
+            .ForegroundColor = GetPaceColor(avatar.Pace)
+            .WriteLine(GetPaceName(avatar.Pace))
+
+            .ForegroundColor = Gray
             .WriteLine("1. Keep Going!")
+            .WriteLine("2. Change Pace")
             .WriteLine("0. Game Menu")
         End With
         ShowPrompt()
     End Sub
+
 
     Private Function GetStatisticColor(value As Integer, maximum As Integer) As Integer
         Select Case CInt(Math.Ceiling((value / maximum) * 4.0))
@@ -56,6 +63,8 @@
                 GoToState(GameStates.GameMenu)
             Case 1
                 GoToState(GameStates.KeepGoing)
+            Case 2
+                GoToState(GameStates.ChangePace)
             Case Else
                 Return False
         End Select

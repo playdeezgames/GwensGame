@@ -1,4 +1,5 @@
 ﻿Friend Module GameStates
+    Friend Const ChangePace = "ChangePace"
     Friend Const ConfirmAbandon = "ConfirmAbandon"
     Friend Const ConfirmQuit = "ConfirmQuit"
     Friend Const Dead = "Dead"

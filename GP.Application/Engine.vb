@@ -72,6 +72,7 @@ Public Class Engine
         AddState(KeepGoing, New KeepGoingState(Me, _frameBuffer))
         AddState(Win, New WinState(Me, _frameBuffer))
         AddState(Dead, New DeadState(Me, _frameBuffer))
+        AddState(ChangePace, New ChangePaceState(Me, _frameBuffer))
     End Sub
 
     Private Sub SplashScreen()
