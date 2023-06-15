@@ -44,4 +44,12 @@ Public Module CharacterExtensions
             character.SetSatiety(character.Satiety - value)
         End If
     End Sub
+    <Extension>
+    Public Function IsDead(character As ICharacter) As Boolean
+        Return character.Health = 0
+    End Function
+    <Extension>
+    Public Function HasWon(character As ICharacter) As Boolean
+        Return character.DistanceRemaining = 0
+    End Function
 End Module

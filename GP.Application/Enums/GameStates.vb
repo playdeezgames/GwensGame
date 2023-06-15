@@ -1,6 +1,7 @@
 ﻿Friend Module GameStates
     Friend Const ConfirmAbandon = "ConfirmAbandon"
     Friend Const ConfirmQuit = "ConfirmQuit"
+    Friend Const Dead = "Dead"
     Friend Const Embark = "Embark"
     Friend Const GameMenu = "GameMenu"
     Friend Const KeepGoing = "KeepGoing"

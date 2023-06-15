@@ -11,7 +11,7 @@
             .WriteLine("You keep going!")
         End With
         Dim avatar = Engine.World.Avatar
-        avatar.KeepGoing(1)
+        avatar.KeepGoing(3)
         GoToState(Neutral)
     End Sub
     Protected Overrides Function HandleChoice(choice As Integer) As Boolean

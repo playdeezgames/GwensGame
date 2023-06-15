@@ -5,8 +5,12 @@
     End Sub
     Public Overrides Sub Run()
         Dim avatar = Engine.World.Avatar
-        If avatar.DistanceRemaining = 0 Then
+        If avatar.HasWon Then
             GoToState(GameStates.Win)
+            Return
+        End If
+        If avatar.IsDead Then
+            GoToState(GameStates.Dead)
             Return
         End If
         With _frameBuffer
