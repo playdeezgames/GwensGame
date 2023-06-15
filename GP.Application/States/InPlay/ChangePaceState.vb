@@ -5,25 +5,18 @@
     End Sub
     Public Overrides Sub Run()
         Dim avatar = Engine.World.Avatar
-        With _frameBuffer
-            .BackgroundColor = Black
-            .WriteLine()
+        With FrameBuffer
+            .WriteLine(,, Black)
 
-            .ForegroundColor = Gray
-            .Write("Current Pace: ")
-            .ForegroundColor = GetPaceColor(avatar.Pace)
-            .WriteLine(GetPaceName(avatar.Pace))
+            .Write("Current Pace: ", Gray)
+            .WriteLine(GetPaceName(avatar.Pace), GetPaceColor(avatar.Pace))
 
-            .ForegroundColor = Brown
-            .WriteLine("Change Pace:")
+            .WriteLine("Change Pace:", Brown)
             For paceIndex = MinimumPace To MaximumPace
-                .ForegroundColor = Gray
-                .Write($"{paceIndex}. ")
-                .ForegroundColor = GetPaceColor(paceIndex)
-                .WriteLine(GetPaceName(paceIndex))
+                .Write($"{paceIndex}. ", Gray)
+                .WriteLine(GetPaceName(paceIndex), GetPaceColor(paceIndex))
             Next
-            .ForegroundColor = Gray
-            .WriteLine("0. Go Back")
+            .WriteLine("0. Go Back", Gray)
         End With
         ShowPrompt()
     End Sub

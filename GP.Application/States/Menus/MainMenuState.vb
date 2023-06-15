@@ -20,13 +20,10 @@
         Return True
     End Function
     Public Overrides Sub Run()
-        With _frameBuffer
-            .BackgroundColor = Black
-            .WriteLine()
-            .ForegroundColor = Brown
+        With FrameBuffer
+            .WriteLine(, Brown, Black)
             .WriteLine("Main Menu:")
-            .ForegroundColor = Gray
-            .WriteLine("1. Embark!")
+            .WriteLine("1. Embark!", Gray)
             .WriteLine("2. Load...")
             .WriteLine("3. Options...")
             .WriteLine("0. Quit")

@@ -4,13 +4,10 @@
         MyBase.New(stateMachine, frameBuffer)
     End Sub
     Public Overrides Sub Run()
-        With _frameBuffer
-            .BackgroundColor = Black
-            .ForegroundColor = Brown
-            .WriteLine()
-            .WriteLine("Game Menu:")
-            .ForegroundColor = Gray
-            .WriteLine("1. Save")
+        With FrameBuffer
+            .WriteLine(,, Black)
+            .WriteLine("Game Menu:", Brown)
+            .WriteLine("1. Save", Gray)
             .WriteLine("2. Abandon Game")
             .WriteLine("3. Options...")
             .WriteLine("0. Resume Game")

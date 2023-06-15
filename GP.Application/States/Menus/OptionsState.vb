@@ -8,13 +8,10 @@
     End Sub
     Friend Shared Property ExitState As String
     Public Overrides Sub Run()
-        With _frameBuffer
-            .BackgroundColor = Black
-            .WriteLine()
-            .ForegroundColor = Brown
+        With FrameBuffer
+            .WriteLine(, Brown, Black)
             .WriteLine("Options:")
-            .ForegroundColor = Gray
-            .WriteLine("1. Toggle Fullscreen")
+            .WriteLine("1. Toggle Fullscreen", Gray)
             .WriteLine("2. Set Display Size...")
             .WriteLine("3. Set Volume...")
             .WriteLine("0. Go Back")

@@ -5,16 +5,13 @@
         MyBase.New(stateMachine, frameBuffer)
     End Sub
     Public Overrides Sub Run()
-        With _frameBuffer
-            .BackgroundColor = Black
-            .WriteLine()
-            .ForegroundColor = Brown
+        With FrameBuffer
+            .WriteLine(, Brown, Black)
             .WriteLine("Load From:")
-            .ForegroundColor = Gray
             Dim index = 1
             For Each slot In SaveSlots
                 If File.Exists(slot.Item2) Then
-                    .WriteLine($"{index}. {slot.Item1}")
+                    .WriteLine($"{index}. {slot.Item1}", Gray)
                 End If
                 index += 1
             Next
@@ -31,7 +28,7 @@
                     Return False
                 End If
                 Engine.World = World.Load(filename)
-                With _frameBuffer
+                With FrameBuffer
                     .BackgroundColor = Black
                     .WriteLine()
                     If Engine.World IsNot Nothing Then

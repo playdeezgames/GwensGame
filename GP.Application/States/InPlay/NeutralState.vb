@@ -13,30 +13,21 @@
             GoToState(GameStates.Dead)
             Return
         End If
-        With _frameBuffer
-            .BackgroundColor = Black
-            .WriteLine()
-            .ForegroundColor = Brown
+        With FrameBuffer
+            .WriteLine(, Brown, Black)
             .WriteLine("Current Status:")
-            .ForegroundColor = Gray
-            .WriteLine($"You have {avatar.DistanceRemaining} miles left to go!")
+            .WriteLine($"You have {avatar.DistanceRemaining} miles left to go!", Gray)
 
-            .Write($"Yer health: ")
-            .ForegroundColor = GetStatisticColor(avatar.Health, avatar.MaximumHealth)
-            .WriteLine($"{avatar.Health}/{avatar.MaximumHealth}")
+            .Write($"Yer health: ", Gray)
+            .WriteLine($"{avatar.Health}/{avatar.MaximumHealth}", GetStatisticColor(avatar.Health, avatar.MaximumHealth))
 
-            .ForegroundColor = Gray
-            .Write($"Yer satiety: ")
-            .ForegroundColor = GetStatisticColor(avatar.Satiety, avatar.MaximumSatiety)
-            .WriteLine($"{avatar.Satiety}/{avatar.MaximumSatiety}")
+            .Write($"Yer satiety: ", Gray)
+            .WriteLine($"{avatar.Satiety}/{avatar.MaximumSatiety}", GetStatisticColor(avatar.Satiety, avatar.MaximumSatiety))
 
-            .ForegroundColor = Gray
-            .Write($"Yer pace: ")
-            .ForegroundColor = GetPaceColor(avatar.Pace)
-            .WriteLine(GetPaceName(avatar.Pace))
+            .Write($"Yer pace: ", Gray)
+            .WriteLine(GetPaceName(avatar.Pace), GetPaceColor(avatar.Pace))
 
-            .ForegroundColor = Gray
-            .WriteLine("1. Keep Going!")
+            .WriteLine("1. Keep Going!", Gray)
             .WriteLine("2. Change Pace")
             .WriteLine("0. Game Menu")
         End With

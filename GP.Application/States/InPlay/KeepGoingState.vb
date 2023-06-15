@@ -4,10 +4,8 @@
         MyBase.New(stateMachine, frameBuffer)
     End Sub
     Public Overrides Sub Run()
-        With _frameBuffer
-            .BackgroundColor = Black
-            .ForegroundColor = Gray
-            .WriteLine()
+        With FrameBuffer
+            .WriteLine(, Gray, Black)
             .WriteLine("You keep going!")
         End With
         Dim avatar = Engine.World.Avatar

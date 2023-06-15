@@ -12,14 +12,11 @@
         _getVolume = getVolume
     End Sub
     Public Overrides Sub Run()
-        With _frameBuffer
-            .BackgroundColor = Black
-            .WriteLine()
-            .ForegroundColor = Brown
+        With FrameBuffer
+            .WriteLine(, Brown, Black)
             .WriteLine($"Volume(currently {_getVolume() * 100.0F:f0}%):")
-            .ForegroundColor = Gray
             For n = 0 To 10
-                .WriteLine($"{n + 1}. {n * 10}%")
+                .WriteLine($"{n + 1}. {n * 10}%", Gray)
             Next
             .WriteLine("0. Go Back")
         End With

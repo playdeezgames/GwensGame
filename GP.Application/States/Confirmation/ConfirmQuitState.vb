@@ -17,13 +17,10 @@
         Return True
     End Function
     Public Overrides Sub Run()
-        With _frameBuffer
-            .BackgroundColor = Black
-            .WriteLine()
-            .ForegroundColor = LightRed
-            .WriteLine("Are you sure you want to quit?")
-            .ForegroundColor = Gray
-            .WriteLine("1. Yes")
+        With FrameBuffer
+            .WriteLine(,, Black)
+            .WriteLine("Are you sure you want to quit?", LightRed)
+            .WriteLine("1. Yes", Gray)
             .WriteLine("0. No")
         End With
         ShowPrompt()

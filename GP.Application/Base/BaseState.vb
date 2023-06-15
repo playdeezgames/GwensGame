@@ -1,13 +1,13 @@
 ﻿Public MustInherit Class BaseState
     Implements IApplicationState
     Protected ReadOnly _stateMachine As IApplicationStateMachine
-    Protected ReadOnly _frameBuffer As IFrameBuffer
+    Protected ReadOnly FrameBuffer As IFrameBuffer
     Protected Sub GoToState(state As String)
         _stateMachine.CurrentStateIdentifier = state
     End Sub
     Sub New(stateMachine As IApplicationStateMachine, frameBuffer As IFrameBuffer)
         _stateMachine = stateMachine
-        _frameBuffer = frameBuffer
+        Me.FrameBuffer = frameBuffer
     End Sub
     Public Overridable Sub Handle(tokens As IEnumerable(Of String)) Implements IApplicationState.Handle
         Const errorText = "Please enter a valid number!"
@@ -27,19 +27,16 @@
     Public MustOverride Sub Run() Implements IApplicationState.Run
     Protected MustOverride Function HandleChoice(choice As Integer) As Boolean
     Protected Sub ShowError(message As String)
-        With _frameBuffer
-            .ForegroundColor = Red
-            .BackgroundColor = Black
-            .WriteLine()
+        With FrameBuffer
+            .WriteLine(, Red, Black)
             .WriteLine(message)
         End With
         Run()
     End Sub
     Protected Sub ShowPrompt()
-        With _frameBuffer
+        With FrameBuffer
             .WriteLine()
-            .ForegroundColor = Cyan
-            .Write("> ")
+            .Write("> ", Cyan)
         End With
     End Sub
 End Class

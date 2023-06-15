@@ -4,10 +4,8 @@
         MyBase.New(stateMachine, frameBuffer)
     End Sub
     Public Overrides Sub Run()
-        With _frameBuffer
-            .BackgroundColor = Black
-            .ForegroundColor = LightGreen
-            .WriteLine()
+        With FrameBuffer
+            .WriteLine(, LightGreen, Black)
             .WriteLine("You made it! I knew you could do it! Congratulations!")
         End With
         Engine.World = Nothing

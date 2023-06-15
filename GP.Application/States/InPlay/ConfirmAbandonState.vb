@@ -4,13 +4,10 @@
         MyBase.New(stateMachine, frameBuffer)
     End Sub
     Public Overrides Sub Run()
-        With _frameBuffer
-            .BackgroundColor = Black
-            .ForegroundColor = LightRed
-            .WriteLine()
+        With FrameBuffer
+            .WriteLine(, LightRed, Black)
             .WriteLine("Are you sure you want to abandon the game?")
-            .ForegroundColor = Gray
-            .WriteLine("1. Yes")
+            .WriteLine("1. Yes", Gray)
             .WriteLine("0. No")
         End With
         ShowPrompt()

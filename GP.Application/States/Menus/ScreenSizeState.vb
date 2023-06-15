@@ -6,14 +6,11 @@
         _setScreenSize = setScreenSize
     End Sub
     Public Overrides Sub Run()
-        With _frameBuffer
-            .BackgroundColor = Black
-            .WriteLine()
-            .ForegroundColor = Brown
+        With FrameBuffer
+            .WriteLine(, Brown, Black)
             .WriteLine("Display Size:")
-            .ForegroundColor = Gray
             For scale = 1 To 12
-                .WriteLine($"{scale}. {scale * ScreenWidth}x{scale * ScreenHeight}(x{scale})")
+                .WriteLine($"{scale}. {scale * ScreenWidth}x{scale * ScreenHeight}(x{scale})", Gray)
             Next
             .WriteLine("0. Go Back")
         End With
