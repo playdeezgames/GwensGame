@@ -8,6 +8,7 @@ Public Module WorldInitializer
             .SetStatistic(StatisticTypes.MaximumHealth, Constants.MaximumHealth)
             .SetStatistic(StatisticTypes.Health, Constants.MaximumHealth)
             .SetStatistic(StatisticTypes.Pace, Constants.InitialPace)
+            .SetStatistic(StatisticTypes.Snax, Constants.InitialSnax)
         End With
         world.Avatar = gwen
     End Sub
