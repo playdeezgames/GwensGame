@@ -3,6 +3,8 @@
     Public Sub New(stateMachine As IApplicationStateMachine, frameBuffer As IFrameBuffer)
         MyBase.New(stateMachine, frameBuffer)
     End Sub
+    Private choiceTable As New Dictionary(Of Integer, (String, Action))
+    Private choiceIndex As Integer
     Public Overrides Sub Run()
         Dim avatar = Engine.World.Avatar
         If avatar.HasWon Then
@@ -13,6 +15,21 @@
             Engine.PlaySfx(Sfx.PlayerDead)
             GoToState(GameStates.Dead)
             Return
+        End If
+        choiceTable.Clear()
+        Dim choiceIndex = 1
+
+        choiceTable(0) = ("Game Menu", AddressOf HandleGameMenu)
+
+        choiceTable(choiceIndex) = ("Keep Going!", AddressOf HandleKeepGoing)
+        choiceIndex += 1
+
+        choiceTable(choiceIndex) = ("Change Pace", AddressOf HandleChangePace)
+        choiceIndex += 1
+
+        If avatar.Snax > 0 Then
+            choiceTable(choiceIndex) = ("Eat Snax", AddressOf HandleEatSnax)
+            choiceIndex += 1
         End If
         With FrameBuffer
             .WriteLine(, Brown, Black)
@@ -28,13 +45,33 @@
             .Write($"Yer pace: ", Gray)
             .WriteLine(GetPaceName(avatar.Pace), GetPaceColor(avatar.Pace))
 
-            .WriteLine("1. Keep Going!", Gray)
-            .WriteLine("2. Change Pace")
-            .WriteLine("0. Game Menu")
+            If avatar.Snax > 0 Then
+                .WriteLine($"You have {avatar.Snax} snax.", Gray)
+            End If
+
+            For index = 1 To choiceIndex - 1
+                .WriteLine($"{index}. {choiceTable(index).Item1}", Gray)
+            Next
+            .WriteLine($"0. {choiceTable(0).Item1}", Gray)
         End With
         ShowPrompt()
     End Sub
 
+    Private Sub HandleEatSnax()
+        GoToState(GameStates.EatSnax)
+    End Sub
+
+    Private Sub HandleChangePace()
+        GoToState(GameStates.ChangePace)
+    End Sub
+
+    Private Sub HandleKeepGoing()
+        GoToState(GameStates.KeepGoing)
+    End Sub
+
+    Private Sub HandleGameMenu()
+        GoToState(GameStates.GameMenu)
+    End Sub
 
     Private Function GetStatisticColor(value As Integer, maximum As Integer) As Integer
         Select Case CInt(Math.Ceiling((value / maximum) * 4.0))
@@ -50,16 +87,10 @@
     End Function
 
     Protected Overrides Function HandleChoice(choice As Integer) As Boolean
-        Select Case choice
-            Case 0
-                GoToState(GameStates.GameMenu)
-            Case 1
-                GoToState(GameStates.KeepGoing)
-            Case 2
-                GoToState(GameStates.ChangePace)
-            Case Else
-                Return False
-        End Select
-        Return True
+        If choiceTable.ContainsKey(choice) Then
+            choiceTable(choice).Item2()
+            Return True
+        End If
+        Return False
     End Function
 End Class

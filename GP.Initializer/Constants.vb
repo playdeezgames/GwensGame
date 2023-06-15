@@ -6,4 +6,5 @@
     Friend Const MaximumSatiety = 100
     Public Const MinimumPace = 1
     Public Const MaximumPace = 5
+    Public Const SnaxSatietyBenefit = 10
 End Module
