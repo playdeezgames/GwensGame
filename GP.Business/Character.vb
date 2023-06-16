@@ -21,7 +21,7 @@
     End Sub
 
     Public Sub AddItem(item As IItem) Implements ICharacter.AddItem
-        Throw New NotImplementedException()
+        CharacterData.ItemIds.Add(item.Id)
     End Sub
 
     Public Function GetStatistic(statisticType As String) As Integer Implements ICharacter.GetStatistic
