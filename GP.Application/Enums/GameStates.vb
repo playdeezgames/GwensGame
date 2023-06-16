@@ -14,6 +14,7 @@
     Friend Const Options = "Options"
     Friend Const Save = "Save"
     Friend Const ScreenSize = "ScreenSize"
+    Friend Const TakeShortcut = "TakeShortcut"
     Friend Const Volume = "Volume"
     Friend Const Win = "Win"
 End Module

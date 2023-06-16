@@ -36,6 +36,12 @@
             choiceTable(choiceIndex) = ("Forage", AddressOf HandleForage)
             choiceIndex += 1
         End If
+
+        If avatar.HasShortcut Then
+            choiceTable(choiceIndex) = ("Take Shortcut", AddressOf HandleShortcut)
+            choiceIndex += 1
+        End If
+
         With FrameBuffer
             .WriteLine(, Brown, Black)
             .WriteLine("Current Status:")
@@ -59,12 +65,20 @@
                 .WriteLine($"You have {avatar.Snax} snax.", Gray)
             End If
 
+            If avatar.HasShortcut Then
+                .WriteLine("There is a potential shortcut here!")
+            End If
+
             For index = 1 To choiceIndex - 1
                 .WriteLine($"{index}. {choiceTable(index).Item1}", Gray)
             Next
             .WriteLine($"0. {choiceTable(0).Item1}", Gray)
         End With
         ShowPrompt()
+    End Sub
+
+    Private Sub HandleShortcut()
+        GoToState(TakeShortcut)
     End Sub
 
     Private Sub HandleForage()
