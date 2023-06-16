@@ -37,11 +37,18 @@ Public Class World
     End Function
 
     Public Function CreateItem(itemType As String) As IItem Implements IWorld.CreateItem
-        Dim itemId = WorldData.Items.Count
-        WorldData.Items.Add(New ItemData With
+        Dim itemData = New ItemData With
                             {
-                                .itemType = itemType
-                            })
+                                .ItemType = itemType,
+                                .Destroyed = False
+                            }
+        Dim itemId = WorldData.Items.FindIndex(Function(x) x.Destroyed)
+        If itemId > -1 Then
+            WorldData.Items(itemId) = itemData
+        Else
+            itemId = WorldData.Items.Count
+            WorldData.Items.Add(itemData)
+        End If
         Return New Item(WorldData, itemId)
     End Function
 End Class
