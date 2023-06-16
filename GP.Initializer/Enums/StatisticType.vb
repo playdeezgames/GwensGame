@@ -1,4 +1,5 @@
 ﻿Friend Module StatisticType
+    Friend Const Distance = "Distance"
     Friend Const DistanceRemaining = "DistanceRemaining"
     Friend Const ForagingAbundance = "ForagingAbundance"
     Friend Const ForagingDifficulty = "ForagingDifficulty"

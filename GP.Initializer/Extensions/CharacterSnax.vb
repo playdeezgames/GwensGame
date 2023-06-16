@@ -11,7 +11,6 @@ Public Module CharacterSnax
     End Sub
     <Extension>
     Public Sub EatSnax(character As ICharacter)
-        character.SetSnax(character.Snax - 1)
-        character.SetSatiety(character.Satiety + SnaxSatietyBenefit)
+        character.DoVerb(VerbType.Eat, (StatisticType.Satiety, SnaxSatietyBenefit))
     End Sub
 End Module

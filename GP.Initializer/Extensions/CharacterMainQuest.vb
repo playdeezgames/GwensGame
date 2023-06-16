@@ -11,9 +11,7 @@ Public Module CharacterMainQuest
     End Sub
     <Extension>
     Public Sub KeepGoing(character As ICharacter, value As Integer)
-        character.SetDistanceRemaining(character.DistanceRemaining - value)
-        ApplyHunger(character, value)
-        RefreshLocalArea(character)
+        character.DoVerb(VerbType.Move, (StatisticType.Distance, value))
     End Sub
 
     Friend Sub RefreshLocalArea(character As ICharacter)
