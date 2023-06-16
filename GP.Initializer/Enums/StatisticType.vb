@@ -10,5 +10,4 @@
     Friend Const Pace = "Pace"
     Friend Const Satiety = "Satiety"
     Friend Const Shortcut = "Shortcut"
-    Friend Const Snax = "Snax"
 End Module
