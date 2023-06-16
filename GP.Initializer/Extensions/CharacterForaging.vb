@@ -33,16 +33,6 @@ Public Module CharacterForaging
     End Sub
     <Extension>
     Public Function Forage(character As ICharacter) As Boolean
-        If Not character.CanForage Then
-            Return False
-        End If
-        character.ApplyHunger(1)
-        Dim roll = RNG.RollDice("1d100") + character.ForagingDifficulty
-        If roll <= character.ForagingSkill Then
-            character.SetForagingAbundance(character.ForagingAbundance - 1)
-            character.SetSnax(character.Snax + 1)
-            Return True
-        End If
-        Return False
+        Return character.DoVerb(VerbType.Forage)
     End Function
 End Module

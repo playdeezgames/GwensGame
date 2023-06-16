@@ -16,8 +16,6 @@ Public Module CharacterShortcut
     End Function
     <Extension>
     Public Sub TakeShortcut(character As ICharacter)
-        character.SetDistanceRemaining(character.DistanceRemaining + character.Shortcut)
-        character.ApplyHunger(1)
-        RefreshLocalArea(character)
+        character.DoVerb(VerbType.TakeShortcut)
     End Sub
 End Module
