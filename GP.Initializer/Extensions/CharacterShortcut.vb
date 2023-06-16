@@ -17,7 +17,7 @@ Public Module CharacterShortcut
     <Extension>
     Public Sub TakeShortcut(character As ICharacter)
         character.SetDistanceRemaining(character.DistanceRemaining + character.Shortcut)
+        character.ApplyHunger(1)
         RefreshLocalArea(character)
     End Sub
-
 End Module
