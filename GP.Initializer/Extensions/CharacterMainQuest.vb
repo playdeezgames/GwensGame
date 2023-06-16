@@ -1,5 +1,4 @@
 ﻿Imports System.Runtime.CompilerServices
-Imports SPLORR.Game
 
 Public Module CharacterMainQuest
     <Extension>
