@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports SPLORR.Game
 
-Public Module CharacterDistanceRemaining
+Public Module CharacterMainQuest
     <Extension>
     Public Function DistanceRemaining(character As ICharacter) As Integer
         Return character.GetStatistic(StatisticTypes.DistanceRemaining)
