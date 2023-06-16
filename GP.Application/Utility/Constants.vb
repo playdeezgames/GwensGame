@@ -23,4 +23,32 @@
     Friend Function GetPaceColor(pace As Integer) As Integer
         Return paceVisuals(pace).Item1
     End Function
+    Friend Function GetForageDifficultyName(difficulty As Integer) As String
+        Select Case difficulty
+            Case <= -30
+                Return "Very Difficulty"
+            Case -29 To -15
+                Return "Difficult"
+            Case -14 To 14
+                Return "Moderate"
+            Case 15 To 29
+                Return "Easy"
+            Case Else
+                Return "Very Easy"
+        End Select
+    End Function
+    Friend Function GetForageDifficultyColor(difficulty As Integer) As Integer
+        Select Case difficulty
+            Case <= -30
+                Return Red
+            Case -29 To -15
+                Return Brown
+            Case -14 To 14
+                Return Yellow
+            Case 15 To 29
+                Return Green
+            Case Else
+                Return LightGreen
+        End Select
+    End Function
 End Module

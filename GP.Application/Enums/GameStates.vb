@@ -5,6 +5,7 @@
     Friend Const Dead = "Dead"
     Friend Const EatSnax = "EatSnax"
     Friend Const Embark = "Embark"
+    Friend Const Forage = "Forage"
     Friend Const GameMenu = "GameMenu"
     Friend Const KeepGoing = "KeepGoing"
     Friend Const Load = "Load"

@@ -31,6 +31,11 @@
             choiceTable(choiceIndex) = ("Eat Snax", AddressOf HandleEatSnax)
             choiceIndex += 1
         End If
+
+        If avatar.CanForage Then
+            choiceTable(choiceIndex) = ("Forage", AddressOf HandleForage)
+            choiceIndex += 1
+        End If
         With FrameBuffer
             .WriteLine(, Brown, Black)
             .WriteLine("Current Status:")
@@ -45,6 +50,11 @@
             .Write($"Yer pace: ", Gray)
             .WriteLine(GetPaceName(avatar.Pace), GetPaceColor(avatar.Pace))
 
+            If avatar.CanForage Then
+                .Write("Foraging: ", Gray)
+                .WriteLine(GetForageDifficultyName(avatar.ForagingDifficulty), GetForageDifficultyColor(avatar.ForagingDifficulty))
+            End If
+
             If avatar.Snax > 0 Then
                 .WriteLine($"You have {avatar.Snax} snax.", Gray)
             End If
@@ -55,6 +65,10 @@
             .WriteLine($"0. {choiceTable(0).Item1}", Gray)
         End With
         ShowPrompt()
+    End Sub
+
+    Private Sub HandleForage()
+        GoToState(Forage)
     End Sub
 
     Private Sub HandleEatSnax()

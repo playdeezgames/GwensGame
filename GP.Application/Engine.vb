@@ -74,6 +74,7 @@ Public Class Engine
         AddState(Dead, New DeadState(Me, _frameBuffer))
         AddState(ChangePace, New ChangePaceState(Me, _frameBuffer))
         AddState(EatSnax, New EatSnaxState(Me, _frameBuffer))
+        AddState(Forage, New ForageState(Me, _frameBuffer))
     End Sub
 
     Private Sub SplashScreen()
