@@ -3,11 +3,11 @@
 Public Module CharacterSnax
     <Extension>
     Public Function Snax(character As ICharacter) As Integer
-        Return character.GetStatistic(StatisticTypes.Snax)
+        Return character.GetStatistic(StatisticType.Snax)
     End Function
     <Extension>
     Public Sub SetSnax(character As ICharacter, value As Integer)
-        character.SetStatistic(StatisticTypes.Snax, Math.Max(value, 0))
+        character.SetStatistic(StatisticType.Snax, Math.Max(value, 0))
     End Sub
     <Extension>
     Public Sub EatSnax(character As ICharacter)

@@ -3,11 +3,11 @@
 Public Module CharacterMainQuest
     <Extension>
     Public Function DistanceRemaining(character As ICharacter) As Integer
-        Return character.GetStatistic(StatisticTypes.DistanceRemaining)
+        Return character.GetStatistic(StatisticType.DistanceRemaining)
     End Function
     <Extension>
     Public Sub SetDistanceRemaining(character As ICharacter, value As Integer)
-        character.SetStatistic(StatisticTypes.DistanceRemaining, Math.Max(value, 0))
+        character.SetStatistic(StatisticType.DistanceRemaining, Math.Max(value, 0))
     End Sub
     <Extension>
     Public Sub KeepGoing(character As ICharacter, value As Integer)
@@ -27,10 +27,10 @@ Public Module CharacterMainQuest
     End Function
     <Extension>
     Public Function Pace(character As ICharacter) As Integer
-        Return character.GetStatistic(StatisticTypes.Pace)
+        Return character.GetStatistic(StatisticType.Pace)
     End Function
     <Extension>
     Public Sub SetPace(character As ICharacter, value As Integer)
-        character.SetStatistic(StatisticTypes.Pace, Math.Clamp(value, MinimumPace, MaximumPace))
+        character.SetStatistic(StatisticType.Pace, Math.Clamp(value, MinimumPace, MaximumPace))
     End Sub
 End Module

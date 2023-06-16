@@ -2,8 +2,8 @@
     Friend Function Initialize(world As IWorld) As ICharacter
         Dim gwen = world.CreateCharacter()
         With gwen
-            .SetStatistic(StatisticTypes.MaximumSatiety, Constants.MaximumSatiety)
-            .SetStatistic(StatisticTypes.MaximumHealth, Constants.MaximumHealth)
+            .SetStatistic(StatisticType.MaximumSatiety, Constants.MaximumSatiety)
+            .SetStatistic(StatisticType.MaximumHealth, Constants.MaximumHealth)
             .SetDistanceRemaining(InitialDistanceRemaining)
             .SetSatiety(Constants.MaximumSatiety)
             .SetHealth(Constants.MaximumHealth)

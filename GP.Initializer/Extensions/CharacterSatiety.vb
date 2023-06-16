@@ -3,15 +3,15 @@
 Public Module CharacterSatiety
     <Extension>
     Public Function Satiety(character As ICharacter) As Integer
-        Return character.GetStatistic(StatisticTypes.Satiety)
+        Return character.GetStatistic(StatisticType.Satiety)
     End Function
     <Extension>
     Public Sub SetSatiety(character As ICharacter, value As Integer)
-        character.SetStatistic(StatisticTypes.Satiety, Math.Clamp(value, 0, character.MaximumSatiety))
+        character.SetStatistic(StatisticType.Satiety, Math.Clamp(value, 0, character.MaximumSatiety))
     End Sub
     <Extension>
     Public Function MaximumSatiety(character As ICharacter) As Integer
-        Return character.GetStatistic(StatisticTypes.MaximumSatiety)
+        Return character.GetStatistic(StatisticType.MaximumSatiety)
     End Function
     <Extension>
     Friend Sub ApplyHunger(character As ICharacter, value As Integer)
