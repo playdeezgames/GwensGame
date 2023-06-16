@@ -1,5 +1,6 @@
 ﻿Public Module Constants
     Friend Const InitialDistanceRemaining = 2000
+    Friend Const InitialForagingSkill = 50
     Friend Const InitialPace = 3
     Friend Const InitialSnax = 10
     Friend Const MaximumHealth = 100

@@ -73,4 +73,9 @@ Public Module CharacterExtensions
         character.SetSnax(character.Snax - 1)
         character.SetSatiety(character.Satiety + SnaxSatietyBenefit)
     End Sub
+    <Extension>
+    Public Sub SetForagingSkill(character As ICharacter, value As Integer)
+        character.SetStatistic(StatisticTypes.ForagingSkill, value)
+    End Sub
+
 End Module
