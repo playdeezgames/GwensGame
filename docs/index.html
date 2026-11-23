@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>Gwen's Peregrination</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #000; color: #777; overflow: hidden; font: 11px/1.4 sans-serif; }
+  body { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  canvas {
+    --cols: 80;
+    --rows: 30;
+    flex: 0 0 auto;
+    width: min(100vw, calc((100vh - var(--footer, 5em)) * var(--cols) * 6 / (var(--rows) * 8)));
+    aspect-ratio: calc(var(--cols) * 6) / calc(var(--rows) * 8);
+    image-rendering: pixelated;
+    touch-action: none;
+    outline: none;
+  }
+  footer { flex: 0 0 auto; margin: 4px 16px 6px; text-align: center; max-width: 90vw; }
+  footer a { color: #aaa; }
+</style>
+</head>
+<body>
+<canvas id="screen" tabindex="0"></canvas>
+<footer id="footer">
+  Gwen's Peregrination by TheGrumpyGameDev (VB.NET, 2023). Rebuilt in Odin and WebAssembly in November 2026 by an AI agent (Claude Code) at the author's direction.
+  Type a number and press Enter, or tap a menu line; Page Up and Page Down scroll back.
+  Font: DINOBYTE by mby, CC BY 4.0, unmodified.<span class="ll-only" hidden> Feedback by LootLocker.</span>
+  <span class="ll-only" hidden><a href="#" id="feedback-link">Send feedback</a> · </span><a href="https://thegrumpygamedev.itch.io/">itch.io</a> · <a href="https://playdeezgames.github.io/oeuvre-of-splorr/">more games</a>
+</footer>
+<script src="odin.js"></script>
+<script src="lootlocker.js"></script>
+<script>
+// Feedback (the shared SPLORR!! LootLocker shim's form, splorr/Tech/LootLocker.md in the vault). The link
+// stays hidden while LL_KEY is empty: this game has no LootLocker game yet (creating one is the author's call).
+// Digits are typed into the game, so there is no feedback key: the footer link only.
+const LL_DOMAIN = "";
+const LL_KEY = "";
+const feedback = LL_KEY ? LootLocker({
+  domain: LL_DOMAIN,
+  key: LL_KEY,
+  version: "1.1.0",
+  idKey: "gwen1:ll-player",
+}).feedbackDialog({ game: "Gwen's Peregrination" }) : null;
+if (feedback) {
+  document.querySelectorAll(".ll-only").forEach((el) => { el.hidden = false; });
+  document.getElementById("feedback-link").addEventListener("click", (e) => { e.preventDefault(); feedback.open(); });
+}
+</script>
+<script>
+(function () {
+  "use strict";
+  const LAYOUTS = { landscape: { cols: 80, rows: 30 }, portrait: { cols: 40, rows: 60 } };
+  const STRIDE = 80; // the grid is stored at its maximum width
+  const CW = 6, CH = 8;
+  let COLS = LAYOUTS.landscape.cols, ROWS = LAYOUTS.landscape.rows;
+  const BACKGROUND = "#000000";
+  const KEY_PREFIX = "gwen1:"; // itch.io games share one origin, so keys are namespaced
+  // The original's 16 colours (CGA order), as its MonoGame host drew them.
+  const PALETTE = [
+    "#000000", "#0000aa", "#00aa00", "#00aaaa", "#aa0000", "#aa00aa", "#aa5500", "#aaaaaa",
+    "#555555", "#5555ff", "#55ff55", "#55ffff", "#ff5555", "#ff55aa", "#ffff55", "#ffffff",
+  ];
+  // Blue on black is hard to read in a 6 by 8 font; it is drawn a little lighter.
+  PALETTE[1] = "#3333dd";
+
+  const canvas = document.getElementById("screen");
+  const ctx = canvas.getContext("2d");
+  const memory = new odin.WasmMemoryInterface();
+  const text = (ptr, len) => new TextDecoder().decode(new Uint8Array(memory.memory.buffer, ptr, len));
+
+  // Wide windows get the original's 80 columns; tall ones (a phone held upright) get 40 by 60,
+  // so the same glyphs are drawn twice as large.
+  const footer = document.getElementById("footer");
+  function applyLayout(force) {
+    document.documentElement.style.setProperty("--footer", (footer.offsetHeight + 12) + "px");
+    const portrait = window.innerHeight - footer.offsetHeight > window.innerWidth * 1.1;
+    const l = portrait ? LAYOUTS.portrait : LAYOUTS.landscape;
+    if (!force && l.cols === COLS && l.rows === ROWS) return;
+    COLS = l.cols; ROWS = l.rows;
+    canvas.width = COLS * CW;
+    canvas.height = ROWS * CH;
+    ctx.imageSmoothingEnabled = false;
+    canvas.style.setProperty("--cols", COLS);
+    canvas.style.setProperty("--rows", ROWS);
+    if (memory.exports && memory.exports.set_layout) memory.exports.set_layout(portrait);
+  }
+  window.addEventListener("resize", () => applyLayout(false));
+  applyLayout(true);
+
+  let sheets = null; // one tinted copy of the font sheet per palette entry
+
+  function tint(img, color) {
+    const c = document.createElement("canvas");
+    c.width = img.width; c.height = img.height;
+    const x = c.getContext("2d");
+    x.drawImage(img, 0, 0);
+    x.globalCompositeOperation = "source-in";
+    x.fillStyle = color;
+    x.fillRect(0, 0, c.width, c.height);
+    return c;
+  }
+
+  function present(ptr, cols, rows, stride) {
+    if (!sheets) return;
+    if (cols !== COLS || rows !== ROWS) { // the game is on another layout: tell it ours
+      applyLayout(true);
+      return;
+    }
+    const cells = new Uint8Array(memory.memory.buffer, ptr, stride * rows * 2);
+    ctx.fillStyle = BACKGROUND;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const i = (r * stride + c) * 2;
+        const ch = cells[i], ink = cells[i + 1] & 15;
+        if (ch !== 0 && ch !== 32) {
+          ctx.drawImage(sheets[ink], (ch % 16) * CW, Math.floor(ch / 16) * CH, CW, CH, c * CW, r * CH, CW, CH);
+        }
+      }
+    }
+  }
+
+  const SOUNDS = ["PlayerHit.wav", "PlayerDead.wav"].map((f) => { const a = new Audio(f); a.preload = "auto"; return a; });
+
+  const imports = {
+    env: {
+      present: present,
+      now_ms: () => Date.now(),
+      storage_get: (kp, kl, ptr, cap) => {
+        try {
+          const v = localStorage.getItem(KEY_PREFIX + text(kp, kl));
+          if (v === null) return -1;
+          const bytes = new TextEncoder().encode(v);
+          if (bytes.length > cap) return -1;
+          new Uint8Array(memory.memory.buffer, ptr, bytes.length).set(bytes);
+          return bytes.length;
+        } catch (e) { return -1; }
+      },
+      storage_set: (kp, kl, vp, vl) => {
+        try { localStorage.setItem(KEY_PREFIX + text(kp, kl), text(vp, vl)); }
+        catch (e) { /* private window or full: play on without saving */ }
+      },
+      fullscreen_toggle: () => {
+        try {
+          if (document.fullscreenElement) document.exitFullscreen();
+          else document.documentElement.requestFullscreen();
+        } catch (e) { /* not allowed here */ }
+      },
+      sfx_play: (id, volume) => {
+        const s = SOUNDS[id];
+        if (!s || volume <= 0) return;
+        try { s.currentTime = 0; s.volume = Math.min(1, volume); s.play().catch(() => {}); } catch (e) {}
+      },
+    },
+  };
+
+  const KEYS = { Enter: 5, Escape: 6, Backspace: 7, PageUp: 8, PageDown: 9 };
+  const send = (k) => { if (memory.exports && memory.exports.on_key) memory.exports.on_key(k); };
+
+  // Read the logical key first (remote desktops send odd codes), see the vault's Gotchas.
+  window.addEventListener("keydown", (e) => {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (feedback && feedback.isOpen) return;
+    let k = 0;
+    if (KEYS[e.key] !== undefined) k = KEYS[e.key];
+    else if (e.key.length === 1) k = e.key.charCodeAt(0);
+    if (k) {
+      e.preventDefault();
+      send(k);
+    }
+  });
+
+  canvas.addEventListener("pointerdown", (e) => {
+    const r = canvas.getBoundingClientRect();
+    const col = Math.floor(((e.clientX - r.left) / r.width) * COLS);
+    const row = Math.floor(((e.clientY - r.top) / r.height) * ROWS);
+    if (memory.exports && memory.exports.on_tap) memory.exports.on_tap(col, row);
+    canvas.focus();
+  });
+  canvas.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    send(e.deltaY < 0 ? 8 : 9);
+  }, { passive: false });
+
+  const img = new Image();
+  img.onload = () => {
+    sheets = PALETTE.map((p) => tint(img, p));
+    odin.runWasm("game.wasm", null, imports, memory);
+  };
+  img.src = "dbyte_1x.png";
+  canvas.focus();
+})();
+</script>
+</body>
+</html>
