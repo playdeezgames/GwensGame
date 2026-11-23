@@ -4,7 +4,7 @@ Page: https://thegrumpygamedev.itch.io/gwens-peregrination
 Jam: DOS Games June 2023 Jam (the live page says "Submission to DOS Games June 2023 Jam").
 Pasted in by hand; nothing here is published by the repo. Cover: `assets/cover.png` (630 by 500, made by `tools/make_cover.py`). Screenshots: `assets/screenshots/` in order (made by `tools/make_shots.sh`).
 
-**Draft, November 23, 2026, for the Odin/wasm port. Not shipped yet.** The Pages site below is not live until the author enables GitHub Pages for this repo.
+**Draft, November 23, 2026, for the Odin/wasm port. Not shipped yet.** The Pages site below is live since November 23, 2026.
 
 ## Short description (the one-line field)
 
@@ -49,7 +49,7 @@ It is the first Gwen metaphor. The sequel is [Gwen's Peregrination II](https://t
 - Kind of project: HTML. Tick "played in the browser".
 - Uploads: only the `html` channel. Remove the old windows, linux and mac downloads on ship day (the ports rule of November 5, 2026; done in the dashboard, butler cannot delete them).
 - Embed: "Click to launch in fullscreen" (`embed[embed_type]` = `maximized`), not a fixed size.
-- External link: "Latest version (GitHub Pages)", https://playdeezgames.github.io/GwensGame/ (once Pages is live).
+- External link: "Latest version (GitHub Pages)", https://playdeezgames.github.io/GwensGame/ (live since November 23, 2026).
 - **For the author to decide:** the page is "Name your own price" and its text says "I intend to put this game on Steam, so that's why it asks for a dollar donation". Steam is closed and the games are free (no paid games), so the suggestion is: set the price to $0 or donate, no minimum, and delete that note. Not changed by anyone yet.
 - Tags: text-based, turn-based, short, survival, dos, retro, metaphor.
 - Genre: Simulation (as now).
